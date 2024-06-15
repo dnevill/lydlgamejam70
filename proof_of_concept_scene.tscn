@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://04tqrwnxlinw" path="res://milestonerusticstonegrey.png" id="1_52g8y"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="1_s6npn"]
-[ext_resource type="Script" path="res://RigidBody2D.gd" id="2_axhsr"]
+[ext_resource type="Script" path="res://PlayerMovement.gd" id="2_axhsr"]
 [ext_resource type="Texture2D" uid="uid://cq63383humwnq" path="res://cat-221-154-8.png" id="2_u5d58"]
 [ext_resource type="Shader" path="res://curved_fragment.gdshader" id="5_ujkng"]
 
@@ -89,6 +89,7 @@ height = 228.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(574, 432)
+collision_layer = 2
 
 [node name="ground" type="Sprite2D" parent="StaticBody2D"]
 material = SubResource("ShaderMaterial_g0jdh")
@@ -114,6 +115,7 @@ texture = SubResource("PlaceholderTexture2D_wvy0c")
 
 [node name="PlayerRigidBody" type="RigidBody2D" parent="."]
 position = Vector2(542, 94)
+collision_mask = 3
 lock_rotation = true
 script = ExtResource("2_axhsr")
 
@@ -122,7 +124,6 @@ sprite_frames = SubResource("SpriteFrames_fbgat")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerRigidBody"]
-visible = false
 position = Vector2(-3, -5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_axcgr")
