@@ -1,21 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://ba1od5fdscg7y"]
+[gd_scene load_steps=18 format=3 uid="uid://ba1od5fdscg7y"]
 
 [ext_resource type="Texture2D" uid="uid://04tqrwnxlinw" path="res://milestonerusticstonegrey.png" id="1_52g8y"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="1_s6npn"]
 [ext_resource type="Script" path="res://RigidBody2D.gd" id="2_axhsr"]
 [ext_resource type="Texture2D" uid="uid://cq63383humwnq" path="res://cat-221-154-8.png" id="2_u5d58"]
-[ext_resource type="Shader" path="res://curved_fragment.gdshader" id="5_ujkng"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0jdh"]
+[ext_resource type="Shader" path="res://testcurve.gdshader" id="3_fymhx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5pbs"]
-size = Vector2(9605, 462)
+size = Vector2(909, 462)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_65f5w"]
-shader = ExtResource("5_ujkng")
-shader_parameter/radius = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wvy0c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lbld"]
+shader = ExtResource("3_fymhx")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ye0w0"]
 atlas = ExtResource("2_u5d58")
@@ -87,32 +82,23 @@ height = 228.0
 
 [node name="Proof of concept scene" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(574, 432)
-
-[node name="ground" type="Sprite2D" parent="StaticBody2D"]
-material = SubResource("ShaderMaterial_g0jdh")
-position = Vector2(0, 4.66667)
-scale = Vector2(10.5083, 1)
-texture = ExtResource("1_52g8y")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-10.5002, 2.33344)
-shape = SubResource("RectangleShape2D_y5pbs")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 278)
 script = ExtResource("1_s6npn")
 
-[node name="WorldCurveEffect" type="TextureRect" parent="Camera2D"]
-material = SubResource("ShaderMaterial_65f5w")
-offset_left = -624.0
-offset_top = -312.0
-offset_right = 638.0
-offset_bottom = 392.0
-texture = SubResource("PlaceholderTexture2D_wvy0c")
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(574, 432)
+scale = Vector2(1.19692, 0.428571)
+
+[node name="ground" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_52g8y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.835419, 2.33344)
+shape = SubResource("RectangleShape2D_y5pbs")
 
 [node name="PlayerRigidBody" type="RigidBody2D" parent="."]
+material = SubResource("ShaderMaterial_3lbld")
 position = Vector2(542, 94)
 lock_rotation = true
 script = ExtResource("2_axhsr")
