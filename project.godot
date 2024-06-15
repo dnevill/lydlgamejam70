@@ -15,6 +15,10 @@ run/main_scene="res://proof_of_concept_scene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PlayerStateManager="*res://PlayerStateManager.gd"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

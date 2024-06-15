@@ -11,7 +11,6 @@ func _ready():
 	self.apply_central_impulse(Vector2(0,VERTACCEL))
 
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
