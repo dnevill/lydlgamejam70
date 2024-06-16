@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://kldsegofsp8k"]
+
+[ext_resource type="Script" path="res://Scripts/Node_World.gd" id="1_m8qel"]
+[ext_resource type="TileSet" uid="uid://bh13703t5d8jy" path="res://Assets/Tiles/tileset.tres" id="2_aek0l"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_m8qel")
+
+[node name="BackgroundMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_aek0l")
+rendering_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 262144, 1, 65536, 262144, 1, 131072, 262144, 1)
+
+[node name="ForegroundMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_aek0l")
+rendering_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 262144, 0, 1, 262144, 0, 2, 262144, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="ready" from="." to="." method="_on_World_ready"]
