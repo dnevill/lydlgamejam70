@@ -1,12 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://ba1od5fdscg7y"]
+[gd_scene load_steps=11 format=3 uid="uid://ba1od5fdscg7y"]
 
 [ext_resource type="Texture2D" uid="uid://04tqrwnxlinw" path="res://milestonerusticstonegrey.png" id="1_52g8y"]
 [ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="1_ixyat"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="1_s6npn"]
-[ext_resource type="Script" path="res://PlayerMovement.gd" id="2_axhsr"]
 [ext_resource type="Texture2D" uid="uid://cvfray8h8jxoj" path="res://Assets/Backgrounds/forest_background_2.png" id="2_fhdnl"]
-[ext_resource type="Texture2D" uid="uid://cq63383humwnq" path="res://cat-221-154-8.png" id="2_u5d58"]
 [ext_resource type="Shader" path="res://curved_fragment.gdshader" id="5_ujkng"]
+[ext_resource type="PackedScene" uid="uid://khg6c7a2fvde" path="res://Player.tscn" id="6_cw7vw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g0jdh"]
 
@@ -15,77 +14,9 @@ size = Vector2(9605, 462)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_65f5w"]
 shader = ExtResource("5_ujkng")
-shader_parameter/radius = 0.5
+shader_parameter/radius = 1.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wvy0c"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ye0w0"]
-atlas = ExtResource("2_u5d58")
-region = Rect2(0, 0, 221, 154)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7smpa"]
-atlas = ExtResource("2_u5d58")
-region = Rect2(221, 0, 221, 154)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4mgpl"]
-atlas = ExtResource("2_u5d58")
-region = Rect2(442, 0, 221, 154)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4b7rc"]
-atlas = ExtResource("2_u5d58")
-region = Rect2(663, 0, 221, 154)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yvafi"]
-atlas = ExtResource("2_u5d58")
-region = Rect2(884, 0, 221, 154)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pag3q"]
-atlas = ExtResource("2_u5d58")
-region = Rect2(0, 154, 221, 154)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5tbcd"]
-atlas = ExtResource("2_u5d58")
-region = Rect2(221, 154, 221, 154)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o17ja"]
-atlas = ExtResource("2_u5d58")
-region = Rect2(442, 154, 221, 154)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fbgat"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ye0w0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7smpa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4mgpl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4b7rc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yvafi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pag3q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5tbcd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o17ja")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_axcgr"]
-radius = 59.0
-height = 228.0
 
 [node name="Proof of concept scene" type="Node2D"]
 
@@ -134,17 +65,4 @@ offset_right = 638.0
 offset_bottom = 380.0
 texture = SubResource("PlaceholderTexture2D_wvy0c")
 
-[node name="PlayerRigidBody" type="RigidBody2D" parent="."]
-position = Vector2(542, 94)
-collision_mask = 3
-lock_rotation = true
-script = ExtResource("2_axhsr")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerRigidBody"]
-sprite_frames = SubResource("SpriteFrames_fbgat")
-autoplay = "default"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerRigidBody"]
-position = Vector2(-3, -5)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_axcgr")
+[node name="PlayerRigidBody" parent="." instance=ExtResource("6_cw7vw")]
