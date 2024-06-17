@@ -39,6 +39,9 @@ func _on_World_ready():
 	pass;
 	assert(LAYER_INDEX_FOREGROUND != null);
 	
+	print("LAYER_INDEX_FOREGROUND "+str(LAYER_INDEX_FOREGROUND));
+	print("LAYER_INDEX_BACKGROUND "+str(LAYER_INDEX_BACKGROUND));
+	
 	# populate tiles
 	var iy = 0;
 	var ix = 0;
@@ -47,12 +50,12 @@ func _on_World_ready():
 	for i in range(0, (MAP_WIDTH * MAP_HEIGHT)):
 		iFG = int(JSON_FILE["layers"][LAYER_INDEX_FOREGROUND]["data"][i])-1;
 		if(iFG > -1):
-			$ForegroundMap.set_cell(0,Vector2i(ix,iy),iFG);
+			$ForegroundMap.set_cell(0,Vector2i(ix,iy),0,Vector2i(iFG % 10,iFG / 10));
 			print("Placing FG "+str(iFG)+" at "+str(ix)+","+str(iy));
-		if(LAYER_INDEX_BACKGROUND):
+		if(LAYER_INDEX_BACKGROUND != null):
 			iBG = int(JSON_FILE["layers"][LAYER_INDEX_BACKGROUND]["data"][i])-1;
 			if(iBG > -1):
-				$BackgroundMap.set_cell(0,Vector2i(ix,iy),iBG);
+				$BackgroundMap.set_cell(0,Vector2i(ix,iy),0,Vector2i(iBG % 10,iBG / 10));
 				print("Placing BG "+str(iBG)+" at "+str(ix)+","+str(iy));
 		ix = ix + 1;
 		if(ix == MAP_WIDTH):
