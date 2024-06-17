@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://ba1od5fdscg7y"]
+[gd_scene load_steps=22 format=3 uid="uid://ba1od5fdscg7y"]
 
 [ext_resource type="Texture2D" uid="uid://04tqrwnxlinw" path="res://milestonerusticstonegrey.png" id="1_52g8y"]
+[ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="1_ixyat"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="1_s6npn"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="2_axhsr"]
+[ext_resource type="Texture2D" uid="uid://cvfray8h8jxoj" path="res://Assets/Backgrounds/forest_background_2.png" id="2_fhdnl"]
 [ext_resource type="Texture2D" uid="uid://cq63383humwnq" path="res://cat-221-154-8.png" id="2_u5d58"]
 [ext_resource type="Shader" path="res://curved_fragment.gdshader" id="5_ujkng"]
 
@@ -87,8 +89,27 @@ height = 228.0
 
 [node name="Proof of concept scene" type="Node2D"]
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, 200)
+texture = ExtResource("1_ixyat")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(2816, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(0, 200)
+texture = ExtResource("2_fhdnl")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(574, 432)
+scale = Vector2(10, 1)
 collision_layer = 2
 
 [node name="ground" type="Sprite2D" parent="StaticBody2D"]
@@ -108,9 +129,9 @@ script = ExtResource("1_s6npn")
 [node name="WorldCurveEffect" type="TextureRect" parent="Camera2D"]
 material = SubResource("ShaderMaterial_65f5w")
 offset_left = -624.0
-offset_top = -312.0
+offset_top = -324.0
 offset_right = 638.0
-offset_bottom = 392.0
+offset_bottom = 380.0
 texture = SubResource("PlaceholderTexture2D_wvy0c")
 
 [node name="PlayerRigidBody" type="RigidBody2D" parent="."]
