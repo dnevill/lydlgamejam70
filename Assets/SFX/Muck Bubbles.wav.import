@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b0kl6f3gvqtya"
+path="res://.godot/imported/Muck Bubbles.wav-dda624b299487a643e4f7573fc97c1d5.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Muck Bubbles.wav"
+dest_files=["res://.godot/imported/Muck Bubbles.wav-dda624b299487a643e4f7573fc97c1d5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxaetu046v0dm"
+path="res://.godot/imported/misc_Honk beep.ogg-a0027c80c108d50d9459314a34aecec5.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/SFX/misc_Honk beep.ogg"
+dest_files=["res://.godot/imported/misc_Honk beep.ogg-a0027c80c108d50d9459314a34aecec5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
