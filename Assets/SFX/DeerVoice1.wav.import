@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c48ul221dvg7m"
-path="res://.godot/imported/oxVoice 1.wav-42a0793e4bf0469e4628921ba108642b.sample"
+path="res://.godot/imported/DeerVoice1.wav-4f9f7964773629ff8f20c361ce143f34.sample"
 
 [deps]
 
-source_file="res://Assets/SFX/oxVoice 1.wav"
-dest_files=["res://.godot/imported/oxVoice 1.wav-42a0793e4bf0469e4628921ba108642b.sample"]
+source_file="res://Assets/SFX/DeerVoice1.wav"
+dest_files=["res://.godot/imported/DeerVoice1.wav-4f9f7964773629ff8f20c361ce143f34.sample"]
 
 [params]
 
