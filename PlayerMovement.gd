@@ -1,8 +1,8 @@
 extends RigidBody2D
 
 const HORZACCEL = 100
-const VERTACCEL = 100
-const MAXSPEED = 500 #This is just the max the player can accelerate to using their own inputs, not a physics limit
+const VERTACCEL = 200
+const MAXSPEED = 250 #This is just the max the player can accelerate to using their own inputs, not a physics limit
 
 var is_grounded = true;
 

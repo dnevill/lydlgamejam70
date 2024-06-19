@@ -48,8 +48,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmc7b"]
-size = Vector2(25, 32)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3tiky"]
 
 [node name="PlayerRigidBody" type="RigidBody2D"]
 position = Vector2(542, 94)
@@ -65,4 +64,4 @@ autoplay = "walk"
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(2, 3.50001)
 rotation = 1.5708
-shape = SubResource("RectangleShape2D_qmc7b")
+shape = SubResource("CapsuleShape2D_3tiky")
