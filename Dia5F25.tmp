@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://b780hw38aude7"]
+
+[ext_resource type="Script" path="res://DialogBox.gd" id="1_n4rks"]
+[ext_resource type="Script" path="res://ButtonOption1.gd" id="2_k531x"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gfqgo"]
+
+[node name="Dialog" type="CanvasLayer"]
+script = ExtResource("1_n4rks")
+
+[node name="DialogBoxContainer" type="Panel" parent="."]
+offset_right = 1124.0
+offset_bottom = 113.0
+
+[node name="DialogText" type="RichTextLabel" parent="DialogBoxContainer"]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 11.0
+offset_right = 1107.0
+offset_bottom = 51.0
+text = "Example text"
+
+[node name="Options" type="Node2D" parent="DialogBoxContainer"]
+position = Vector2(12, 30)
+
+[node name="ButtonOption1" type="Button" parent="DialogBoxContainer/Options"]
+offset_left = 123.0
+offset_top = 37.0
+offset_right = 422.0
+offset_bottom = 69.0
+focus_neighbor_right = NodePath("../ButtonOption2")
+script = ExtResource("2_k531x")
+
+[node name="ButtonOption2" type="Button" parent="DialogBoxContainer/Options"]
+visible = false
+offset_left = 457.0
+offset_top = 37.0
+offset_right = 775.0
+offset_bottom = 69.0
+focus_neighbor_left = NodePath("../ButtonOption1")
+focus_neighbor_right = NodePath("../ButtonOption3")
+
+[node name="ButtonOption3" type="Button" parent="DialogBoxContainer/Options"]
+visible = false
+offset_left = 833.0
+offset_top = 37.0
+offset_right = 1087.0
+offset_bottom = 69.0
+focus_neighbor_left = NodePath("../ButtonOption2")
+
+[node name="NPCImage" type="TextureRect" parent="."]
+offset_left = 18.0
+offset_top = 15.0
+offset_right = 104.0
+offset_bottom = 95.0
+texture = SubResource("PlaceholderTexture2D_gfqgo")
+
+[connection signal="pressed" from="DialogBoxContainer/Options/ButtonOption1" to="." method="_on_button_option_1_pressed"]
+[connection signal="pressed" from="DialogBoxContainer/Options/ButtonOption2" to="." method="_on_button_option_2_pressed"]
+[connection signal="pressed" from="DialogBoxContainer/Options/ButtonOption3" to="." method="_on_button_option_3_pressed"]
