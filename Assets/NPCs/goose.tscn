@@ -1,14 +1,84 @@
-[gd_scene load_steps=5 format=3 uid="uid://deuew24su3ga3"]
+[gd_scene load_steps=10 format=3 uid="uid://deuew24su3ga3"]
 
 [ext_resource type="Texture2D" uid="uid://dcynep724f3qb" path="res://Assets/Sprites/Goose_idle.png.png" id="1_cggtt"]
 [ext_resource type="Script" path="res://Assets/NPCs/goose.gd" id="1_w0rmw"]
 [ext_resource type="PackedScene" uid="uid://b780hw38aude7" path="res://DialogBox.tscn" id="3_xqh8e"]
+[ext_resource type="AudioStream" uid="uid://d11eourjidfbm" path="res://Assets/SFX/misc_goose call DENOISE .ogg" id="4_85liq"]
+[ext_resource type="AudioStream" uid="uid://bxaetu046v0dm" path="res://Assets/SFX/misc_Honk beep.ogg" id="4_rl060"]
+
+[sub_resource type="Animation" id="Animation_qp465"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ct6dl"]
+resource_name = "new_animation"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -10), Vector2(0, 0), Vector2(0, -10), Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.605629, 0.0, -0.605629, 0.0, 0.605629, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_23tq6"]
+_data = {
+"RESET": SubResource("Animation_qp465"),
+"shake quarter sec": SubResource("Animation_ct6dl")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7wvn"]
 size = Vector2(30, 31)
 
 [node name="Goose" type="Node2D"]
 script = ExtResource("1_w0rmw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_23tq6")
+}
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_cggtt")
@@ -22,6 +92,18 @@ shape = SubResource("RectangleShape2D_s7wvn")
 [node name="Dialog" parent="." instance=ExtResource("3_xqh8e")]
 visible = false
 
+[node name="DialogSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_85liq")
+
+[node name="IdleSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rl060")
+
+[node name="Timer" type="Timer" parent="IdleSound"]
+wait_time = 5.0
+autostart = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="option_selected" from="Dialog" to="." method="_on_dialog_option_selected"]
+[connection signal="finished" from="IdleSound" to="." method="_on_idle_sound_finished"]
+[connection signal="timeout" from="IdleSound/Timer" to="." method="_on_timer_timeout"]
