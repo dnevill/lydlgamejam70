@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://deuew24su3ga3"]
+
+[ext_resource type="Texture2D" uid="uid://dcynep724f3qb" path="res://Assets/Sprites/Goose_idle.png.png" id="1_cggtt"]
+
+[node name="Goose" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cggtt")
