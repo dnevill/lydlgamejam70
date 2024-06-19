@@ -10,4 +10,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	self.position = player_rigid_body.position
+	#self.position.x = player_rigid_body.position.x;
 	pass
