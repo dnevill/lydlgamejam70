@@ -56,5 +56,6 @@ offset_bottom = 95.0
 texture = SubResource("PlaceholderTexture2D_gfqgo")
 
 [connection signal="pressed" from="DialogBoxContainer/Options/ButtonOption1" to="." method="_on_button_option_1_pressed"]
+[connection signal="visibility_changed" from="DialogBoxContainer/Options/ButtonOption1" to="DialogBoxContainer/Options/ButtonOption1" method="_on_visibility_changed"]
 [connection signal="pressed" from="DialogBoxContainer/Options/ButtonOption2" to="." method="_on_button_option_2_pressed"]
 [connection signal="pressed" from="DialogBoxContainer/Options/ButtonOption3" to="." method="_on_button_option_3_pressed"]

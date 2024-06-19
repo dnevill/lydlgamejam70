@@ -17,6 +17,11 @@ func SetOption3Text(input_text : String):
 func SetPhoto(input_texture : Texture):
 	$NPCImage.texture = input_texture
 
+func Reveal():
+	visible = true
+	$DialogBoxContainer/Options/ButtonOption3.grab_focus()
+	$DialogBoxContainer/Options/ButtonOption2.grab_focus()
+	$DialogBoxContainer/Options/ButtonOption1.grab_focus()
 
 signal option_selected(optionNumber : int)
 

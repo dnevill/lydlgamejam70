@@ -5,14 +5,17 @@ var ready_to_interact = true;
 var waiting_to_interact = false;
 var disabledPlayer = null
 
-@onready var tween = Tween
+var myFate = PlayerStateManager.DeerFate
+var myFates = PlayerStateManager.DeerFates
 
+@onready var tween = Tween
+#$enum DeerFates {DIDNT_MEET_YET, HELPED, SCARED, IGNORED}
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	dialogBox.SetDialogText("Oh no, a fox! I've heard foxes are dangerous, pwease be nice.")
-	dialogBox.SetOption1Text("Eat the goose")
-	dialogBox.SetOption2Text("Ask the goose to carry you")
-	dialogBox.SetOption3Text("Ignore the goose")
+	dialogBox.SetDialogText("I'm so scared, I think one of the humans is looking for me. Which way are they coming from?")
+	dialogBox.SetOption1Text("Help the deer")
+	dialogBox.SetOption2Text("Scare the deer")
+	dialogBox.SetOption3Text("Ignore them")
 	dialogBox.SetPhoto($Sprite2D.texture)
 	#Probably need some code here to position the dialog box on screen at a good spot.
 	pass # Replace with function body.
@@ -45,18 +48,18 @@ func _on_dialog_option_selected(optionNumber):
 	disabledPlayer.in_dialog = false
 	match optionNumber:
 		1:
-			print("Oh no the goose is dead")
-			PlayerStateManager.GooseFate = PlayerStateManager.GooseFates.ATE
+			print("Oh no the deer is helped")
+			myFate = myFates.HELPED
 			ready_to_interact = false
 		2:
-			print("Hooray the goose carries the player here")
-			PlayerStateManager.GooseFate = PlayerStateManager.GooseFates.HELPED
+			print("Oh the player scared the deer")
+			myFate = myFates.SCARED
 			ready_to_interact = false
 		3:
-			print("Ignored, set a timer to allow goose interaction again in a few seconds")
+			print("Ignored, set a timer to allow interaction again in a few seconds")
 			#Note that since it stays active, this fate might get set, then later adjusted back while they're still visible on camera
 			#So don't later on hook up an event listener to this fate to affect things with its on_changed or anything
-			PlayerStateManager.GooseFate = PlayerStateManager.GooseFates.IGNORED
+			myFate = myFates.IGNORED
 			ready_to_interact = false
 			waiting_to_interact = true
 	dialogBox.visible = false
@@ -67,7 +70,6 @@ func ShakeSprite():
 	pass
 
 func _on_timer_timeout():
-	print(get_viewport().gui_get_focus_owner())
 	if ready_to_interact:
 		$IdleSound.play()
 		$AnimationPlayer.play("shake quarter sec")

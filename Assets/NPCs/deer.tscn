@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://deuew24su3ga3"]
+[gd_scene load_steps=10 format=3 uid="uid://b6uh01pqb4qvv"]
 
-[ext_resource type="Texture2D" uid="uid://dcynep724f3qb" path="res://Assets/Sprites/Goose_idle.png.png" id="1_cggtt"]
-[ext_resource type="Script" path="res://Assets/NPCs/goose.gd" id="1_w0rmw"]
-[ext_resource type="PackedScene" uid="uid://b780hw38aude7" path="res://DialogBox.tscn" id="3_xqh8e"]
-[ext_resource type="AudioStream" uid="uid://d11eourjidfbm" path="res://Assets/SFX/misc_goose call DENOISE .ogg" id="4_85liq"]
-[ext_resource type="AudioStream" uid="uid://bxaetu046v0dm" path="res://Assets/SFX/misc_Honk beep.ogg" id="4_rl060"]
+[ext_resource type="Script" path="res://Assets/NPCs/deer.gd" id="1_lc2cd"]
+[ext_resource type="Texture2D" uid="uid://gh3itaxw56hq" path="res://Assets/Sprites/deer_idle.png" id="2_sq1wd"]
+[ext_resource type="PackedScene" uid="uid://b780hw38aude7" path="res://DialogBox.tscn" id="3_3i84o"]
+[ext_resource type="AudioStream" uid="uid://d4mhwf6fot7p0" path="res://Assets/SFX/DeerVoice2.wav" id="4_1erdh"]
+[ext_resource type="AudioStream" uid="uid://c48ul221dvg7m" path="res://Assets/SFX/DeerVoice1.wav" id="5_1b3fl"]
 
 [sub_resource type="Animation" id="Animation_qp465"]
 length = 0.001
@@ -68,11 +68,13 @@ _data = {
 "shake quarter sec": SubResource("Animation_ct6dl")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7wvn"]
-size = Vector2(30, 31)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_22iew"]
+radius = 18.4761
+height = 57.892
 
-[node name="Goose" type="Node2D"]
-script = ExtResource("1_w0rmw")
+[node name="Deer" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_lc2cd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
@@ -81,25 +83,26 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_cggtt")
+texture = ExtResource("2_sq1wd")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, 0.5)
-shape = SubResource("RectangleShape2D_s7wvn")
+position = Vector2(2, 2)
+rotation = 2.39285
+shape = SubResource("CapsuleShape2D_22iew")
 
-[node name="Dialog" parent="." instance=ExtResource("3_xqh8e")]
+[node name="Dialog" parent="." instance=ExtResource("3_3i84o")]
 visible = false
 
 [node name="DialogSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_85liq")
+stream = ExtResource("4_1erdh")
 
 [node name="IdleSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_rl060")
+stream = ExtResource("5_1b3fl")
 
 [node name="Timer" type="Timer" parent="IdleSound"]
-wait_time = 3.5
+wait_time = 3.0
 autostart = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
