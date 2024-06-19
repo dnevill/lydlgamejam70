@@ -1,7 +1,7 @@
 extends Node2D
 
 enum GooseFates {DIDNT_MEET_YET, HELPED, ATE, IGNORED}
-enum LumberjackAxeFates {DIDNT_MEET_YET, GAVE, STOLE, LEFT }
+enum LumberjackAxeFates {DIDNT_MEET_YET, GAVE, STOLE, LEFT}
 enum FishermanFates {DIDNT_MEET_YET, BUCKET_KNOCKED, FISHERMAN_KNOCKED, ASKED_FOR_FISH}
 enum DeerFates {DIDNT_MEET_YET, HELPED, SCARED, IGNORED}
 enum OxFates {DIDNT_MEET_YET, RELEASED, PLOWED}
@@ -19,3 +19,15 @@ var FishermanIIFate = FishermanIIFates.DIDNT_MEET_YET
 var HunterFate = HunterFates.DIDNT_MEET_YET
 var FieldNPCFate = FieldNPCFates.DIDNT_MEET_YET
 var FarmerFate = FarmerFates.DIDNT_MEET_YET
+
+
+func printfates():
+	print("GooseFate: " + GooseFates.find_key(GooseFate))
+	print("LumberjackAxeFate: " + LumberjackAxeFates.find_key(LumberjackAxeFate))
+	print("FishermanFate: " + FishermanFates.find_key(FishermanFate))
+	print("DeerFate: " + DeerFates.find_key(DeerFate))
+	print("OxFate: " + OxFates.find_key(OxFate))
+	print("FishermanIIFate: " + FishermanIIFates.find_key(FishermanIIFate))
+	print("HunterFate: " + HunterFates.find_key(HunterFate))
+	print("FieldNPCFate: " + FieldNPCFates.find_key(FieldNPCFate))
+	print("FarmerFate: " + FarmerFates.find_key(FarmerFate))

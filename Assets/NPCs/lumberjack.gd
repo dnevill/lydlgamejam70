@@ -5,17 +5,14 @@ var ready_to_interact = true;
 var waiting_to_interact = false;
 var disabledPlayer = null
 
-var myFate = PlayerStateManager.DeerFate
-var myFates = PlayerStateManager.DeerFates
-
 @onready var tween = Tween
 #$enum DeerFates {DIDNT_MEET_YET, HELPED, SCARED, IGNORED}
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	dialogBox.SetDialogText("I'm so scared, I think one of the humans is looking for me. Which way are they coming from?")
-	dialogBox.SetOption1Text("Help the deer")
-	dialogBox.SetOption2Text("Scare the deer")
-	dialogBox.SetOption3Text("Ignore them")
+	dialogBox.SetDialogText("Gimme my axe!")
+	dialogBox.SetOption1Text("Give the axe")
+	dialogBox.SetOption2Text("Steal the axe")
+	dialogBox.SetOption3Text("Leave it in the tree")
 	dialogBox.SetPhoto($Sprite2D.texture)
 	#Probably need some code here to position the dialog box on screen at a good spot.
 	pass # Replace with function body.
@@ -48,18 +45,16 @@ func _on_dialog_option_selected(optionNumber):
 	disabledPlayer.in_dialog = false
 	match optionNumber:
 		1:
-			print("Oh no the deer is helped")
-			PlayerStateManager.DeerFate = PlayerStateManager.DeerFates.HELPED
+			print("We gave him the axe")
+			PlayerStateManager.LumberjackAxeFate = PlayerStateManager.LumberjackAxeFates.GAVE
 			ready_to_interact = false
 		2:
-			print("Oh the player scared the deer")
-			PlayerStateManager.DeerFate = PlayerStateManager.DeerFates.SCARED
+			print("We stealin' that axe weee")
+			PlayerStateManager.LumberjackAxeFate = PlayerStateManager.LumberjackAxeFates.STOLE
 			ready_to_interact = false
 		3:
-			print("Ignored, set a timer to allow interaction again in a few seconds")
-			#Note that since it stays active, this fate might get set, then later adjusted back while they're still visible on camera
-			#So don't later on hook up an event listener to this fate to affect things with its on_changed or anything
-			PlayerStateManager.DeerFate = PlayerStateManager.DeerFates.IGNORED
+			print("We left the axe in the tree")
+			PlayerStateManager.LumberjackAxeFate = PlayerStateManager.LumberjackAxeFates.LEFT
 			ready_to_interact = false
 			waiting_to_interact = true
 	dialogBox.visible = false

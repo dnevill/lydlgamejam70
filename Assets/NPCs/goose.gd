@@ -67,7 +67,6 @@ func ShakeSprite():
 	pass
 
 func _on_timer_timeout():
-	print(get_viewport().gui_get_focus_owner())
 	if ready_to_interact:
 		$IdleSound.play()
 		$AnimationPlayer.play("shake quarter sec")

@@ -100,6 +100,7 @@ stream = ExtResource("4_1erdh")
 
 [node name="IdleSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_1b3fl")
+max_distance = 500.0
 
 [node name="Timer" type="Timer" parent="IdleSound"]
 wait_time = 3.0

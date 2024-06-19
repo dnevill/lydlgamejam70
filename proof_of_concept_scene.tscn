@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ba1od5fdscg7y"]
+[gd_scene load_steps=14 format=3 uid="uid://ba1od5fdscg7y"]
 
 [ext_resource type="Texture2D" uid="uid://04tqrwnxlinw" path="res://milestonerusticstonegrey.png" id="1_52g8y"]
 [ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="1_ixyat"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://khg6c7a2fvde" path="res://Player.tscn" id="6_cw7vw"]
 [ext_resource type="PackedScene" uid="uid://deuew24su3ga3" path="res://Assets/NPCs/goose.tscn" id="7_ppxw2"]
 [ext_resource type="PackedScene" uid="uid://b6uh01pqb4qvv" path="res://Assets/NPCs/deer.tscn" id="8_40f3j"]
+[ext_resource type="PackedScene" uid="uid://kvgvhbf76kir" path="res://Assets/NPCs/lumberjack.tscn" id="9_hga4v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g0jdh"]
 
@@ -75,3 +76,6 @@ position = Vector2(875, 187)
 
 [node name="Deer" parent="." instance=ExtResource("8_40f3j")]
 position = Vector2(316, 154)
+
+[node name="Lumberjack" parent="." instance=ExtResource("9_hga4v")]
+position = Vector2(1746, 144)

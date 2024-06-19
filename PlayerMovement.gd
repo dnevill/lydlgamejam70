@@ -15,6 +15,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_end"):
+		PlayerStateManager.printfates()
 	if not in_dialog:
 		if Input.is_action_pressed("ui_left"):
 			$PlayerAnimSprite.flip_h = true;
@@ -25,7 +27,7 @@ func _physics_process(delta):
 			scale = Vector2(1,1)
 			if linear_velocity.x < MAXSPEED:
 				apply_central_impulse(Vector2(HORZACCEL,0))
-		if Input.is_action_pressed("ui_up") and is_on_floor():
+		if Input.is_action_just_pressed("ui_up") and is_on_floor():
 			#start some jump animation
 			$PlayerAnimSprite.play("jump")
 			print("You jumped! and " + str(is_on_floor()))
@@ -34,6 +36,8 @@ func _physics_process(delta):
 		elif is_on_floor():
 			$PlayerAnimSprite.play("walk")
 			is_grounded = true;
+
+
 
 func is_on_floor():
 	if self.test_move(transform, Vector2.DOWN):
