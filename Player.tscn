@@ -1,9 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://khg6c7a2fvde"]
+[gd_scene load_steps=16 format=3 uid="uid://khg6c7a2fvde"]
 
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_3k6b3"]
+[ext_resource type="Texture2D" uid="uid://q6g0lk67sjdr" path="res://Assets/Sprites/fox_idle.png" id="2_6kosu"]
 [ext_resource type="Texture2D" uid="uid://b2snxy56wn700" path="res://Assets/Sprites/fox_jump.png" id="2_v4ltq"]
 [ext_resource type="Texture2D" uid="uid://dfd7i1s1ve1fj" path="res://Assets/Sprites/fox_walk.png" id="3_86jrc"]
 [ext_resource type="Texture2D" uid="uid://beax7ysoy1raa" path="res://Assets/Sprites/fox_feathered.png" id="4_8gutq"]
+[ext_resource type="AudioStream" uid="uid://dadfempqrk6r8" path="res://Assets/SFX/ScratchUp.ogg" id="5_sny51"]
+[ext_resource type="AudioStream" uid="uid://cc2hcitpr67pq" path="res://Assets/SFX/ScratchDown.ogg" id="6_mur7g"]
+[ext_resource type="AudioStream" uid="uid://cg0co0lem0v26" path="res://Assets/SFX/ScratchClunk.ogg" id="7_wiifw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0rx2x"]
 friction = 0.2
@@ -27,6 +31,14 @@ region = Rect2(144, 0, 48, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fbgat"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6kosu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_v4ltq")
@@ -76,7 +88,7 @@ script = ExtResource("1_3k6b3")
 
 [node name="PlayerAnimSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fbgat")
-animation = &"walk"
+animation = &"idle"
 autoplay = "walk"
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
@@ -84,4 +96,21 @@ position = Vector2(-2, 3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3tiky")
 
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_sny51")
+
+[node name="WalkSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_mur7g")
+
+[node name="BumpSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_wiifw")
+
+[node name="WalkNoiseTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="IdleTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

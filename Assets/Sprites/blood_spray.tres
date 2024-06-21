@@ -1,0 +1,23 @@
+[gd_resource type="AnimatedTexture" load_steps=7 format=3 uid="uid://cbrtaptmb7bl1"]
+
+[ext_resource type="Texture2D" uid="uid://cpqx3uaukj3iv" path="res://Assets/Sprites/blood_spray0.png" id="1_rk3qs"]
+[ext_resource type="Texture2D" uid="uid://kldw1u3mfnyj" path="res://Assets/Sprites/blood_spray1.png" id="2_dkf7y"]
+[ext_resource type="Texture2D" uid="uid://er2075hvtvvh" path="res://Assets/Sprites/blood_spray2.png" id="3_ic0i1"]
+[ext_resource type="Texture2D" uid="uid://lrrjqdou64mp" path="res://Assets/Sprites/blood_spray3.png" id="4_10my1"]
+[ext_resource type="Texture2D" uid="uid://ca34fr7tuxd35" path="res://Assets/Sprites/blood_spray4.png" id="5_22n7h"]
+[ext_resource type="Texture2D" uid="uid://dr4aaey5e1jfi" path="res://Assets/Sprites/blood_spray5.png" id="6_2pg35"]
+
+[resource]
+frames = 6
+speed_scale = 3.0
+frame_0/texture = ExtResource("1_rk3qs")
+frame_1/texture = ExtResource("2_dkf7y")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_ic0i1")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_10my1")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_22n7h")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_2pg35")
+frame_5/duration = 1.0

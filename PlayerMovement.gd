@@ -13,11 +13,6 @@ var has_lingering_jump = false
 
 @onready var start_position = self.position
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	self.apply_central_impulse(Vector2(0,VERTACCEL))
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_end"):
@@ -38,15 +33,25 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("ui_up") and is_on_floor():
 			#start some jump animation
 			$PlayerAnimSprite.play("jump")
+			$JumpSFX.play()
 			print("You jumped! and " + str(is_on_floor()))
 			#This is a 'just pressed' so we use an impulse, we don't care about integrating across frames
 			apply_central_impulse(Vector2(0,-VERTACCEL))
 			is_grounded = false;
 			has_lingering_jump = false
 		elif is_on_floor():
-			$PlayerAnimSprite.play("walk")
+			if abs(linear_velocity.x) > 1:
+				$PlayerAnimSprite.play("walk")
+				$IdleTimer.stop()
+				if $WalkNoiseTimer.is_stopped():
+					$WalkSFX.play()
+					$WalkNoiseTimer.start()
+			else:
+				if $IdleTimer.is_stopped():
+					$IdleTimer.start()
 			is_grounded = true;
-
+	var spdscale = min(1,abs(linear_velocity.x) / (1.0 * MAXSPEED))
+	$PlayerAnimSprite.speed_scale = spdscale
 
 
 func is_on_floor():
@@ -58,19 +63,22 @@ func is_on_floor():
 
 
 func _on_body_entered(body):
-	print(body)
-	print(body.name)
 	if body.name == "Killplane":
-		print(body)
 		teleport_position = start_position
-	elif body.name == "SpecialTerrain":
+	if body.name == "SpecialTerrain":
 		has_lingering_jump = true
+
+	
 
 
 func _integrate_forces(state):
 	if teleport_position != null:
-		print(teleport_position)
 		var mytran = state.get_transform()
 		mytran.origin = teleport_position
 		teleport_position = null
 		state.set_transform(mytran)
+
+
+func _on_idle_timer_timeout():
+	if abs(linear_velocity.x) < 1 and is_grounded:
+		$PlayerAnimSprite.play("idle") # Replace with function body.

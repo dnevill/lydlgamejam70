@@ -7,8 +7,6 @@ var ready_to_interact = true;
 var waiting_to_interact = false;
 var disabledPlayer : Player = null
 
-@onready var tween = Tween
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	dialogBox.SetDialogText("Oh no, a fox! I've heard foxes are dangerous, pwease be nice.")
@@ -51,6 +49,16 @@ func _on_dialog_option_selected(optionNumber):
 		1:
 			print("Oh no the goose is dead")
 			PlayerStateManager.GooseFate = PlayerStateManager.GooseFates.ATE
+			z_index = 1
+			$DialogSound.pitch_scale = 0.5
+			$DialogSound.play()
+			$CPUParticles2DFeathers.emitting = true
+			$CPUParticles2DFeathers2.emitting = true
+			var tween = get_tree().create_tween()
+			tween.tween_property($Sprite2D, "scale", Vector2(1,-1), 0.5)
+			tween.parallel().tween_property($Sprite2D, "position", Vector2.UP * 50, 0.5).as_relative().from_current()
+			tween.tween_property($Sprite2D, "position", Vector2.DOWN * 400, 4).as_relative()
+			tween.parallel().tween_property($Sprite2D, "rotation", 30, 4)
 			ready_to_interact = false
 		2:
 			print("Hooray the goose carries the player here")
