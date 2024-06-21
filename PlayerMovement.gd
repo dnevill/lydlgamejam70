@@ -7,6 +7,9 @@ const MAXSPEED = 250 #This is just the max the player can accelerate to using th
 var is_grounded = true;
 
 var in_dialog = false;
+var teleport_position = null
+
+@onready var start_position = self.position
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -45,3 +48,20 @@ func is_on_floor():
 	else:
 		return false
 
+
+
+func _on_body_entered(body):
+	print(body)
+	print(body.name)
+	if body.name == "Killplane":
+		print(body)
+		teleport_position = start_position
+
+
+func _integrate_forces(state):
+	if teleport_position != null:
+		print(teleport_position)
+		var mytran = state.get_transform()
+		mytran.origin = teleport_position
+		teleport_position = null
+		state.set_transform(mytran)

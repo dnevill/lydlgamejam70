@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://kldsegofsp8k"]
+[gd_scene load_steps=11 format=3 uid="uid://kldsegofsp8k"]
 
 [ext_resource type="Script" path="res://Scripts/Node_World.gd" id="1_m8qel"]
 [ext_resource type="TileSet" uid="uid://bh13703t5d8jy" path="res://Assets/Tiles/tileset.tres" id="2_aek0l"]
@@ -10,9 +10,11 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sga7q"]
 shader = ExtResource("7_j81ql")
-shader_parameter/radius = 1.0
+shader_parameter/radius = 10.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p1nhc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n04s4"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_m8qel")
@@ -52,15 +54,21 @@ layer_1/tile_data = PackedInt32Array(-196608, 0, 0, -196607, 0, 0, -262144, 0, 0
 position = Vector2(82, -177)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
+position = Vector2(83, -176)
 script = ExtResource("6_salax")
 
 [node name="WorldCurveEffect" type="TextureRect" parent="Camera2D"]
+visible = false
 material = SubResource("ShaderMaterial_sga7q")
 offset_left = -624.0
-offset_top = -324.0
+offset_top = -321.0
 offset_right = 638.0
-offset_bottom = 380.0
+offset_bottom = 383.0
 texture = SubResource("PlaceholderTexture2D_p1nhc")
+
+[node name="Killplane" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killplane"]
+shape = SubResource("WorldBoundaryShape2D_n04s4")
 
 [connection signal="ready" from="." to="." method="_on_World_ready"]

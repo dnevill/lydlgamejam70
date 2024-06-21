@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4scu160gkx8u"]
+[gd_scene load_steps=4 format=3 uid="uid://b4scu160gkx8u"]
 
 [ext_resource type="TileSet" uid="uid://bh13703t5d8jy" path="res://Assets/Tiles/tileset.tres" id="1_pyc3v"]
 [ext_resource type="Script" path="res://Scripts/Scene1-1lilypads.gd" id="2_18siw"]
+[ext_resource type="PackedScene" uid="uid://deuew24su3ga3" path="res://Assets/NPCs/goose.tscn" id="3_57hya"]
 
 [node name="RootNode" type="Node2D"]
 metadata/_edit_lock_ = true
@@ -25,3 +26,7 @@ layer_0/name = "bg"
 layer_1/name = "fg"
 layer_1/tile_data = PackedInt32Array(65535, 196608, 2, 0, 262144, 2, 17, 196608, 2, 18, 262144, 2)
 script = ExtResource("2_18siw")
+
+[node name="Goose" parent="." instance=ExtResource("3_57hya")]
+z_index = -1
+position = Vector2(223, -240)

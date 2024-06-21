@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://kvgvhbf76kir"]
 
 [ext_resource type="Script" path="res://Assets/NPCs/lumberjack.gd" id="1_5h362"]
-[ext_resource type="Texture2D" uid="uid://84cclhj4enje" path="res://Assets/Sprites/human_placeholder.png" id="2_rcx31"]
+[ext_resource type="Texture2D" uid="uid://dd2u2ji2xw47c" path="res://Assets/Sprites/lumberjack.png" id="2_bwn2x"]
 [ext_resource type="PackedScene" uid="uid://b780hw38aude7" path="res://DialogBox.tscn" id="3_7dbmt"]
 [ext_resource type="AudioStream" uid="uid://dod028x04exuo" path="res://Assets/SFX/human_complaining.ogg" id="4_4edco"]
 [ext_resource type="AudioStream" uid="uid://1q5bc6th7j07" path="res://Assets/SFX/human_low_huh.ogg" id="5_es58m"]
@@ -83,7 +83,7 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_rcx31")
+texture = ExtResource("2_bwn2x")
 
 [node name="Area2D" type="Area2D" parent="."]
 
