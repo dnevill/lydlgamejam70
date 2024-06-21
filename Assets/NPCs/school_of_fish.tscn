@@ -1,0 +1,102 @@
+[gd_scene load_steps=2 format=3 uid="uid://d64mxwdjgin4"]
+
+[ext_resource type="Texture2D" uid="uid://by1p6m0tequ8s" path="res://Assets/Sprites/fish.png" id="1_dac2q"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(478, -63)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1236, 30)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-129, -15)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(40, -11)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(-1, 28)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(-124, 32)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(813, -8)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(1110, 32)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+position = Vector2(963, 20)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+position = Vector2(691, 28)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+position = Vector2(489, 32)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D11" type="Sprite2D" parent="."]
+position = Vector2(301, 28)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D12" type="Sprite2D" parent="."]
+position = Vector2(-177, 9)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D13" type="Sprite2D" parent="."]
+position = Vector2(90, 23)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D14" type="Sprite2D" parent="."]
+position = Vector2(786, 28)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D15" type="Sprite2D" parent="."]
+position = Vector2(1540, 18)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")
+
+[node name="Sprite2D16" type="Sprite2D" parent="."]
+position = Vector2(1612, 20)
+rotation = 0.958186
+scale = Vector2(0.561078, 0.561078)
+texture = ExtResource("1_dac2q")

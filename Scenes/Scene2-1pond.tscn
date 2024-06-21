@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://bh13703t5d8jy" path="res://Assets/Tiles/tileset.tres" id="1_pyc3v"]
 [ext_resource type="Script" path="res://Scenes/Scene2-1pond.gd" id="1_rgl7g"]
 [ext_resource type="PackedScene" uid="uid://cwe2fqmxqhng" path="res://Assets/NPCs/fisherman.tscn" id="2_vw5lh"]
-[ext_resource type="Texture2D" uid="uid://by1p6m0tequ8s" path="res://Assets/Sprites/fish.png" id="4_vyrwk"]
+[ext_resource type="PackedScene" uid="uid://d64mxwdjgin4" path="res://Assets/NPCs/school_of_fish.tscn" id="4_cnxia"]
 
 [sub_resource type="Animation" id="Animation_7laxd"]
 resource_name = "Jiggle_Fish_School"
@@ -60,104 +60,8 @@ metadata/_edit_lock_ = true
 [node name="Fisherman" parent="." instance=ExtResource("2_vw5lh")]
 position = Vector2(413, -291)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" parent="." instance=ExtResource("4_cnxia")]
 position = Vector2(471, -61)
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-position = Vector2(1236, 30)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
-position = Vector2(-129, -15)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Node2D"]
-position = Vector2(40, -11)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D4" type="Sprite2D" parent="Node2D"]
-position = Vector2(-1, 28)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D5" type="Sprite2D" parent="Node2D"]
-position = Vector2(-124, 32)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D6" type="Sprite2D" parent="Node2D"]
-position = Vector2(813, -8)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D7" type="Sprite2D" parent="Node2D"]
-position = Vector2(1110, 32)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D8" type="Sprite2D" parent="Node2D"]
-position = Vector2(963, 20)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D9" type="Sprite2D" parent="Node2D"]
-position = Vector2(691, 28)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D10" type="Sprite2D" parent="Node2D"]
-position = Vector2(489, 32)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D11" type="Sprite2D" parent="Node2D"]
-position = Vector2(301, 28)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D12" type="Sprite2D" parent="Node2D"]
-position = Vector2(-177, 9)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D13" type="Sprite2D" parent="Node2D"]
-position = Vector2(90, 23)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D14" type="Sprite2D" parent="Node2D"]
-position = Vector2(786, 28)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D15" type="Sprite2D" parent="Node2D"]
-position = Vector2(1540, 18)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
-
-[node name="Sprite2D16" type="Sprite2D" parent="Node2D"]
-position = Vector2(1612, 20)
-rotation = 0.958186
-scale = Vector2(0.561078, 0.561078)
-texture = ExtResource("4_vyrwk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

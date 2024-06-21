@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://heagyyt2yy4u"]
+
+[ext_resource type="Script" path="res://Scenes/fishpath2d.gd" id="1_iq34r"]
+[ext_resource type="Texture2D" uid="uid://by1p6m0tequ8s" path="res://Assets/Sprites/fish.png" id="2_1232k"]
+
+[node name="PathFollow2D" type="PathFollow2D"]
+position = Vector2(331, -82)
+rotation = 0.124355
+script = ExtResource("1_iq34r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.496136, -3.96911)
+rotation = 0.643849
+texture = ExtResource("2_1232k")
+
+[node name="_Timer_240230" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

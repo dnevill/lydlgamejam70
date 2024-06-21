@@ -54,6 +54,8 @@ offset_top = 15.0
 offset_right = 104.0
 offset_bottom = 95.0
 texture = SubResource("PlaceholderTexture2D_gfqgo")
+expand_mode = 2
+stretch_mode = 4
 
 [connection signal="pressed" from="DialogBoxContainer/Options/ButtonOption1" to="." method="_on_button_option_1_pressed"]
 [connection signal="visibility_changed" from="DialogBoxContainer/Options/ButtonOption1" to="DialogBoxContainer/Options/ButtonOption1" method="_on_visibility_changed"]

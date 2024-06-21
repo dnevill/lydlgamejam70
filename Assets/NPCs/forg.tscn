@@ -1,0 +1,88 @@
+[gd_scene load_steps=11 format=3 uid="uid://b8mg7aq85vpgm"]
+
+[ext_resource type="Script" path="res://Forg.gd" id="1_i06du"]
+[ext_resource type="Texture2D" uid="uid://v380unbjqhg0" path="res://Assets/Sprites/frogs_idle.png" id="2_jsvd2"]
+[ext_resource type="AudioStream" uid="uid://rswrbkrb3sx" path="res://Assets/SFX/mutant_frog-1.ogg" id="3_cppfi"]
+[ext_resource type="AudioStream" uid="uid://14g6d7t3iwyi" path="res://Assets/SFX/mutant_frog-2.ogg" id="4_uoedl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s2gub"]
+bounce = 0.8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lp51"]
+atlas = ExtResource("2_jsvd2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc2ni"]
+atlas = ExtResource("2_jsvd2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3yqa"]
+atlas = ExtResource("2_jsvd2")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0laph"]
+atlas = ExtResource("2_jsvd2")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_572l4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lp51")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc2ni")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3yqa")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0laph")
+}],
+"loop": true,
+"name": &"smol",
+"speed": 5.0
+}]
+
+[node name="Forg" type="RigidBody2D"]
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_s2gub")
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 12)
+script = ExtResource("1_i06du")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_572l4")
+animation = &"blue"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+build_mode = 1
+polygon = PackedVector2Array(-13, 14, 13, 14, 5, -16, -7, -16)
+
+[node name="Frog1SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_cppfi")
+
+[node name="Frog2SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_uoedl")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
