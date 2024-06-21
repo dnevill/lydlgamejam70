@@ -1,9 +1,11 @@
 extends Node2D
 @onready var dialogBox : DialogBox = $Dialog
 
+
+const LAUNCH_VECTOR = Vector2(1200,-1000)
 var ready_to_interact = true;
 var waiting_to_interact = false;
-var disabledPlayer = null
+var disabledPlayer : Player = null
 
 @onready var tween = Tween
 
@@ -36,8 +38,10 @@ func _on_area_2d_body_exited(body):
 		print("Hey the player stopped touchin' me")
 		waiting_to_interact = false
 		ready_to_interact = true
+	elif body.name == "PlayerRigidBody" and PlayerStateManager.GooseFate == PlayerStateManager.GooseFates.HELPED:
+		body.apply_central_impulse(LAUNCH_VECTOR)
+		
 
-	pass # Replace with function body.
 
 
 
@@ -51,6 +55,7 @@ func _on_dialog_option_selected(optionNumber):
 		2:
 			print("Hooray the goose carries the player here")
 			PlayerStateManager.GooseFate = PlayerStateManager.GooseFates.HELPED
+			disabledPlayer.apply_central_impulse(LAUNCH_VECTOR)
 			ready_to_interact = false
 		3:
 			print("Ignored, set a timer to allow goose interaction again in a few seconds")

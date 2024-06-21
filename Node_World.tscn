@@ -55,6 +55,7 @@ position = Vector2(82, -177)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(83, -176)
+zoom = Vector2(1.5, 1.5)
 script = ExtResource("6_salax")
 
 [node name="WorldCurveEffect" type="TextureRect" parent="Camera2D"]

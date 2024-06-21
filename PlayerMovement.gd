@@ -1,6 +1,6 @@
 class_name Player extends RigidBody2D
 
-const HORZACCEL = 100
+const HORZACCEL = 60000
 const VERTACCEL = 500
 const MAXSPEED = 250 #This is just the max the player can accelerate to using their own inputs, not a physics limit
 
@@ -8,6 +8,8 @@ var is_grounded = true;
 
 var in_dialog = false;
 var teleport_position = null
+
+var has_lingering_jump = false
 
 @onready var start_position = self.position
 
@@ -24,18 +26,23 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_left"):
 			$PlayerAnimSprite.flip_h = true;
 			if linear_velocity.x > -MAXSPEED:
-				apply_central_impulse(Vector2(-HORZACCEL,0))
+				apply_central_force(Vector2(-HORZACCEL*delta,0))
 		elif Input.is_action_pressed("ui_right"):
 			$PlayerAnimSprite.flip_h = false;
 			scale = Vector2(1,1)
 			if linear_velocity.x < MAXSPEED:
-				apply_central_impulse(Vector2(HORZACCEL,0))
+				apply_central_force(Vector2(HORZACCEL*delta,0))
+		#else:
+			#No left/right input, so we should start damping our movement back down
+			#var movementVector = player.
 		if Input.is_action_just_pressed("ui_up") and is_on_floor():
 			#start some jump animation
 			$PlayerAnimSprite.play("jump")
 			print("You jumped! and " + str(is_on_floor()))
+			#This is a 'just pressed' so we use an impulse, we don't care about integrating across frames
 			apply_central_impulse(Vector2(0,-VERTACCEL))
 			is_grounded = false;
+			has_lingering_jump = false
 		elif is_on_floor():
 			$PlayerAnimSprite.play("walk")
 			is_grounded = true;
@@ -43,7 +50,7 @@ func _physics_process(delta):
 
 
 func is_on_floor():
-	if self.test_move(transform, Vector2.DOWN):
+	if self.test_move(transform, Vector2.DOWN) or has_lingering_jump:
 		return true
 	else:
 		return false
@@ -56,6 +63,8 @@ func _on_body_entered(body):
 	if body.name == "Killplane":
 		print(body)
 		teleport_position = start_position
+	elif body.name == "SpecialTerrain":
+		has_lingering_jump = true
 
 
 func _integrate_forces(state):
