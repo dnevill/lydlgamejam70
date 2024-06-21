@@ -1,0 +1,145 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwe2fqmxqhng"]
+
+[ext_resource type="Script" path="res://Assets/NPCs/fisherman.gd" id="1_r8psp"]
+[ext_resource type="Texture2D" uid="uid://dfcmv8s3a5grd" path="res://Assets/Sprites/fisherman.png" id="2_rwy8n"]
+[ext_resource type="PackedScene" uid="uid://b780hw38aude7" path="res://DialogBox.tscn" id="3_56u7a"]
+[ext_resource type="PackedScene" uid="uid://dsyhp5kmrbtck" path="res://Assets/NPCs/fish.tscn" id="3_ma4n1"]
+[ext_resource type="AudioStream" uid="uid://dod028x04exuo" path="res://Assets/SFX/human_complaining.ogg" id="4_1c8qd"]
+[ext_resource type="AudioStream" uid="uid://1q5bc6th7j07" path="res://Assets/SFX/human_low_huh.ogg" id="5_2lrnr"]
+
+[sub_resource type="Animation" id="Animation_ct6dl"]
+resource_name = "new_animation"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -10), Vector2(0, 0), Vector2(0, -10), Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.605629, 0.0, -0.605629, 0.0, 0.605629, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qp465"]
+resource_name = "wiggle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2DFish:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.226563, 0.226563), Vector2(-0.227, 0.227), Vector2(0.227, 0.227), Vector2(-0.227, 0.227), Vector2(0.227, 0.227), Vector2(0.227, -0.227)]
+}
+
+[sub_resource type="Animation" id="Animation_27arj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2DFish:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.226563, 0.226563)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_23tq6"]
+_data = {
+"RESET": SubResource("Animation_27arj"),
+"shake quarter sec": SubResource("Animation_ct6dl"),
+"wiggle": SubResource("Animation_qp465")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_22iew"]
+radius = 18.4761
+height = 64.0
+
+[node name="Fisherman" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_r8psp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_23tq6")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rwy8n")
+
+[node name="Sprite2DFish" parent="Sprite2D" instance=ExtResource("3_ma4n1")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 2.5)
+shape = SubResource("CapsuleShape2D_22iew")
+
+[node name="Dialog" parent="." instance=ExtResource("3_56u7a")]
+visible = false
+
+[node name="DialogSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1c8qd")
+
+[node name="IdleSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_2lrnr")
+max_distance = 500.0
+
+[node name="Timer" type="Timer" parent="IdleSound"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="option_selected" from="Dialog" to="." method="_on_dialog_option_selected"]
+[connection signal="finished" from="IdleSound" to="." method="_on_idle_sound_finished"]
+[connection signal="timeout" from="IdleSound/Timer" to="." method="_on_timer_timeout"]
