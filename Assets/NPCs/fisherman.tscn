@@ -117,6 +117,7 @@ libraries = {
 texture = ExtResource("2_rwy8n")
 
 [node name="Sprite2DFish" parent="Sprite2D" instance=ExtResource("3_ma4n1")]
+scale = Vector2(0.226563, 0.226563)
 
 [node name="Area2D" type="Area2D" parent="."]
 

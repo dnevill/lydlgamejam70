@@ -50,10 +50,19 @@ func _on_dialog_option_selected(optionNumber):
 		1:
 			print("Oh no the deer is helped")
 			PlayerStateManager.DeerFate = PlayerStateManager.DeerFates.HELPED
+			$DialogSound.pitch_scale = 0.8
+			$DialogSound.play()
+			var tween = get_tree().create_tween()
+			tween.tween_property($Sprite2D, "scale", Vector2(-1,1), 0.5)
+			tween.tween_property($Sprite2D, "position", Vector2.RIGHT * 500, 4).as_relative().from_current()
 			ready_to_interact = false
 		2:
 			print("Oh the player scared the deer")
 			PlayerStateManager.DeerFate = PlayerStateManager.DeerFates.SCARED
+			$DialogSound.pitch_scale = 2.5
+			$DialogSound.play()
+			var tween = get_tree().create_tween()
+			tween.tween_property($Sprite2D, "position", Vector2.LEFT * 2000, 8).as_relative().from_current()
 			ready_to_interact = false
 		3:
 			print("Ignored, set a timer to allow interaction again in a few seconds")
