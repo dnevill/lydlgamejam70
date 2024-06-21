@@ -8,7 +8,7 @@ func _on_World_ready():
 	#
 	# Includes a Scene after 30 tiles of main level.
 	#
-	var newScene = load("res://Scenes/Scene1-1pond.tscn");
+	var newScene = load("res://Scenes/Scene3-1frog.tscn");
 	var newSceneInst = newScene.instantiate();
 	OtherSceneNode.add_child(newSceneInst);
 	newSceneInst.position.x = TILE_SIZE * 30;
