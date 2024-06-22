@@ -9,11 +9,6 @@ var disabledPlayer = null
 #$enum DeerFates {DIDNT_MEET_YET, HELPED, SCARED, IGNORED}
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	dialogBox.SetDialogText("Bro, I am like SO strongk. Like SO. STRONK. Let me go and I will LITERALLY jump over the moon. You'll see")
-	dialogBox.SetOption1Text("Free the ox")
-	dialogBox.SetOption2Text("Leave it yoked")
-	#dialogBox.SetOption3Text("Ignore them")
-	dialogBox.SetPhoto($Sprite2D.texture)
 	#Probably need some code here to position the dialog box on screen at a good spot.
 	pass # Replace with function body.
 
@@ -23,6 +18,11 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
+	dialogBox.SetDialogText("Bro, I am like SO strongk. Like SO. STRONK. Let me go and I will LITERALLY jump over the moon. You'll see")
+	dialogBox.SetOption1Text("Free the ox")
+	dialogBox.SetOption2Text("Leave it yoked")
+	#dialogBox.SetOption3Text("Ignore them")
+	dialogBox.SetPhoto($Sprite2D.texture)
 	if body.name == "PlayerRigidBody" and ready_to_interact:
 		ready_to_interact = false
 		print("Hey the player touched me OMGEEEEE lets spawn a dialogbox")
@@ -53,6 +53,7 @@ func _on_dialog_option_selected(optionNumber):
 			tween.tween_property($Sprite2D, "scale", Vector2(4,4), 2)
 			tween.parallel().tween_property($Sprite2D, "position", Vector2.RIGHT * 500, 0.5).as_relative().from_current()
 			tween.tween_property($Sprite2D, "position", Vector2.LEFT * 1000 + Vector2.UP * 100, 1.5).as_relative()
+			tween.tween_callback(queue_free)
 			ready_to_interact = false
 		2:
 			print("Ignored, set a timer to allow interaction again in a few seconds")

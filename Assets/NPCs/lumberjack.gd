@@ -9,11 +9,6 @@ var disabledPlayer = null
 #$enum DeerFates {DIDNT_MEET_YET, HELPED, SCARED, IGNORED}
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	dialogBox.SetDialogText("Gimme my axe!")
-	dialogBox.SetOption1Text("Give the axe")
-	dialogBox.SetOption2Text("Steal the axe")
-	dialogBox.SetOption3Text("Leave it in the tree")
-	dialogBox.SetPhoto($Sprite2D.texture)
 	#Probably need some code here to position the dialog box on screen at a good spot.
 	pass # Replace with function body.
 
@@ -23,6 +18,11 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
+	dialogBox.SetDialogText("Gimme my axe!")
+	dialogBox.SetOption1Text("Give the axe")
+	dialogBox.SetOption2Text("Steal the axe")
+	dialogBox.SetOption3Text("Leave it in the tree")
+	dialogBox.SetPhoto($Sprite2D.texture)
 	if body.name == "PlayerRigidBody" and ready_to_interact:
 		ready_to_interact = false
 		print("Hey the player touched me OMGEEEEE lets spawn a dialogbox")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://rwcfqmnm42fu"]
+[gd_scene load_steps=17 format=3 uid="uid://rwcfqmnm42fu"]
 
 [ext_resource type="Script" path="res://Scripts/Node_World.gd" id="1_tohdx"]
 [ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="2_wcgcc"]
@@ -9,6 +9,10 @@
 [ext_resource type="Shader" path="res://curved_fragment.gdshader" id="7_wet55"]
 [ext_resource type="PackedScene" uid="uid://cwe2fqmxqhng" path="res://Assets/NPCs/fisherman.tscn" id="8_1kicy"]
 [ext_resource type="PackedScene" uid="uid://tjxq87wps27u" path="res://Assets/NPCs/fishermanII.tscn" id="9_3o6co"]
+[ext_resource type="PackedScene" uid="uid://deuew24su3ga3" path="res://Assets/NPCs/goose.tscn" id="10_y6jqo"]
+[ext_resource type="PackedScene" uid="uid://b6uh01pqb4qvv" path="res://Assets/NPCs/deer.tscn" id="11_1ie6u"]
+[ext_resource type="PackedScene" uid="uid://kvgvhbf76kir" path="res://Assets/NPCs/lumberjack.tscn" id="12_lgbni"]
+[ext_resource type="PackedScene" uid="uid://cj4lw86a3m16s" path="res://Assets/NPCs/ox.tscn" id="13_2iuph"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sga7q"]
 shader = ExtResource("7_wet55")
@@ -75,9 +79,22 @@ texture = SubResource("PlaceholderTexture2D_p1nhc")
 shape = SubResource("WorldBoundaryShape2D_n04s4")
 
 [node name="Fisherman" parent="." instance=ExtResource("8_1kicy")]
-position = Vector2(944, -228)
+position = Vector2(630, -300)
 
 [node name="FishermanII" parent="." instance=ExtResource("9_3o6co")]
-position = Vector2(234, -226)
+position = Vector2(1068, -231)
+
+[node name="Goose" parent="." instance=ExtResource("10_y6jqo")]
+position = Vector2(184, -194)
+scale = Vector2(2, 2)
+
+[node name="Deer" parent="." instance=ExtResource("11_1ie6u")]
+position = Vector2(758, -276)
+
+[node name="Lumberjack" parent="." instance=ExtResource("12_lgbni")]
+position = Vector2(293, -220)
+
+[node name="Ox" parent="." instance=ExtResource("13_2iuph")]
+position = Vector2(903, -200)
 
 [connection signal="ready" from="." to="." method="_on_World_ready"]

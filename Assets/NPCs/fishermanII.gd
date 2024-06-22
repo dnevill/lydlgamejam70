@@ -43,10 +43,12 @@ func _on_dialog_option_selected(optionNumber):
 			if (PlayerStateManager.FishermanFate == PlayerStateManager.FishermanFates.BUCKET_KNOCKED):
 				var tween = get_tree().create_tween()
 				tween.tween_property($Sprite2D, "position", Vector2.LEFT * 4000, 40).as_relative().from_current()
+				tween.tween_callback(queue_free)
 			elif (PlayerStateManager.FishermanFate == PlayerStateManager.FishermanFates.FISHERMAN_KNOCKED):
 				var tween = get_tree().create_tween()
 				tween.tween_property($Sprite2D, "position", Vector2.UP * 25 + Vector2.RIGHT * 200, 2).as_relative().from_current()
 				tween.tween_property($Sprite2D, "position", Vector2.DOWN * 4000, 40).as_relative()
+				tween.tween_callback(queue_free)
 			else:
 				#Well, he was either ignored or we asked for a fish and now there's 3 billion frogs and no fish so
 				var tween = get_tree().create_tween()

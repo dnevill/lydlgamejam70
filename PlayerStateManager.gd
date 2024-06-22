@@ -22,6 +22,16 @@ var HunterFate = HunterFates.DIDNT_MEET_YET
 var FieldNPCFate = FieldNPCFates.DIDNT_MEET_YET
 var FarmerFate = FarmerFates.DIDNT_MEET_YET
 
+func _ready():
+	GooseFate = GooseFates.DIDNT_MEET_YET
+	LumberjackAxeFate = LumberjackAxeFates.DIDNT_MEET_YET
+	FishermanFate = FishermanFates.DIDNT_MEET_YET
+	DeerFate = DeerFates.DIDNT_MEET_YET
+	OxFate = OxFates.DIDNT_MEET_YET
+	FishermanIIFate = FishermanIIFates.DIDNT_MEET_YET
+	HunterFate = HunterFates.DIDNT_MEET_YET
+	FieldNPCFate = FieldNPCFates.DIDNT_MEET_YET
+	FarmerFate = FarmerFates.DIDNT_MEET_YET
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_home"):
@@ -64,12 +74,21 @@ func decrementfates():
 	printfates()
 	
 func adjustfatesbyx(x : int):
-	GooseFate += x
-	LumberjackAxeFate  += x
-	FishermanFate += x
-	DeerFate += x
-	OxFate += x
-	FishermanIIFate += x
-	HunterFate += x
-	FieldNPCFate += x
-	FarmerFate += x
+	if GooseFate + x > -1 and GooseFate + x < 4:
+		GooseFate += x
+	if LumberjackAxeFate + x > -1 and LumberjackAxeFate + x < 4:
+		LumberjackAxeFate  += x
+	if FishermanFate + x > -1 and FishermanFate + x < 4:
+		FishermanFate += x
+	if DeerFate + x > -1 and DeerFate + x < 4:
+		DeerFate += x
+	if OxFate + x > -1 and OxFate + x < 4:
+		OxFate += x
+	if FishermanIIFate + x > -1 and FishermanIIFate + x < 4:
+		FishermanIIFate += x
+	if HunterFate + x > -1 and HunterFate + x < 4:
+		HunterFate += x
+	if FieldNPCFate + x > -1 and FieldNPCFate + x < 4:
+		FieldNPCFate += x
+	if FarmerFate + x > -1 and FarmerFate + x < 4:
+		FarmerFate += x
