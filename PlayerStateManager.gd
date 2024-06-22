@@ -35,11 +35,16 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_home"):
-		PlayerStateManager.cycleNum += 1
-		if PlayerStateManager.cycleNum > 3:
-			resetfates()
-		get_tree().reload_current_scene()
+		EndCycle(true)
 
+
+func EndCycle(loopCycleToStart = false):
+	PlayerStateManager.cycleNum += 1
+	if PlayerStateManager.cycleNum > 3 and loopCycleToStart:
+		resetfates()
+	elif PlayerStateManager.cycleNum > 3:
+		cycleNum = 3
+	get_tree().reload_current_scene()
 
 func printfates():
 	print("Cyclenumber: " + str(cycleNum))

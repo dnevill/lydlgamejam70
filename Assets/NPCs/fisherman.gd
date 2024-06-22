@@ -49,12 +49,20 @@ func _on_dialog_option_selected(optionNumber):
 		2:
 			print("Knocked bucket")
 			PlayerStateManager.FishermanFate = PlayerStateManager.FishermanFates.BUCKET_KNOCKED
+			$Sprite2D/Sprite2DFish.z_index += 3
+			var tween = get_tree().create_tween()
+			tween.tween_property($Sprite2D/Sprite2DFish, "position", Vector2.UP * 75 + Vector2.RIGHT * 100, 0.5).as_relative().from_current()
+			tween.tween_property($Sprite2D/Sprite2DFish, "position", Vector2.DOWN * 4000 + Vector2.RIGHT * 1000, 20).as_relative()
+			tween.tween_callback($Sprite2D/Sprite2DFish.queue_free)
 			#tweens to send the bucket into the water
 			ready_to_interact = false
 		3:
 			print("Knocked fisherman")
 			PlayerStateManager.FishermanFate = PlayerStateManager.FishermanFates.FISHERMAN_KNOCKED
-			#tweens to send them into the water, with a tween.tween_callback(queue_free)
+			var tween = get_tree().create_tween()
+			tween.tween_property($Sprite2D, "position", Vector2.UP * 75 + Vector2.RIGHT * 100, 0.5).as_relative().from_current()
+			tween.tween_property($Sprite2D, "position", Vector2.DOWN * 4000 + Vector2.RIGHT * 1000, 20).as_relative()
+			tween.tween_callback(queue_free)
 			ready_to_interact = false
 	dialogBox.visible = false
 	
