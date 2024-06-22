@@ -84,7 +84,7 @@ shape = SubResource("WorldBoundaryShape2D_n04s4")
 position = Vector2(123, 27)
 
 [node name="Goose" parent="Node2D" instance=ExtResource("10_y6jqo")]
-position = Vector2(184, -194)
+position = Vector2(45, -190)
 scale = Vector2(2, 2)
 
 [node name="Lumberjack" parent="Node2D" instance=ExtResource("12_lgbni")]

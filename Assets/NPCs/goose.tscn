@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://deuew24su3ga3"]
+[gd_scene load_steps=13 format=3 uid="uid://deuew24su3ga3"]
 
 [ext_resource type="Texture2D" uid="uid://dcynep724f3qb" path="res://Assets/Sprites/Goose_idle.png.png" id="1_cggtt"]
 [ext_resource type="Script" path="res://Assets/NPCs/goose.gd" id="1_w0rmw"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bxaetu046v0dm" path="res://Assets/SFX/misc_Honk beep.ogg" id="4_rl060"]
 [ext_resource type="Texture2D" uid="uid://vl6jxkgrk6v3" path="res://Assets/Sprites/featherpickup1.png" id="6_r0y3b"]
 [ext_resource type="Texture2D" uid="uid://cbrtaptmb7bl1" path="res://Assets/Sprites/blood_spray.tres" id="7_5wu16"]
+[ext_resource type="AudioStream" uid="uid://cnr2feh85if0k" path="res://Assets/SFX/CHARGE.ogg" id="8_qpe03"]
 
 [sub_resource type="Animation" id="Animation_qp465"]
 length = 0.001
@@ -133,8 +134,12 @@ gravity = Vector2(0, 200)
 initial_velocity_min = 200.0
 initial_velocity_max = 250.0
 
+[node name="ChargeSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_qpe03")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="option_selected" from="Dialog" to="." method="_on_dialog_option_selected"]
 [connection signal="finished" from="IdleSound" to="." method="_on_idle_sound_finished"]
 [connection signal="timeout" from="IdleSound/Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="ChargeSFX" to="." method="_on_charge_sfx_finished"]

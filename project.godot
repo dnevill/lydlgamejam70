@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 PlayerStateManager="*res://PlayerStateManager.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [editor]
 
 movie_writer/movie_file="C:/Users/dnevi/Dropbox/My PC (DESKTOP-0CGNTLR)/Documents/recording.avi"
