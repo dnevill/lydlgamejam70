@@ -35,7 +35,7 @@ func _physics_process(delta):
 			#start some jump animation
 			$PlayerAnimSprite.play("jump")
 			$JumpSFX.play()
-			print("You jumped! and " + str(is_on_floor()))
+			#print("You jumped! and " + str(is_on_floor()))
 			#This is a 'just pressed' so we use an impulse, we don't care about integrating across frames
 			apply_central_impulse(Vector2(0,-VERTACCEL))
 			is_grounded = false;
