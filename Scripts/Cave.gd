@@ -1,4 +1,5 @@
 extends Node2D
+signal has_been_entered
 
 @onready var NudgeNode = $NudgeNode;
 
@@ -18,7 +19,7 @@ func _process(_delta):
 				NudgeNode.visible = false;
 			InDoorResting -= 1;
 			if(InDoorResting == 0):
-				print("EXIT CYCLE HERE");
+				has_been_entered.emit();
 
 func _on_warning_area_body_entered(body):
 	if body.name == "PlayerRigidBody":
