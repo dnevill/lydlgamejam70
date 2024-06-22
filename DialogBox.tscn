@@ -10,19 +10,19 @@ script = ExtResource("1_n4rks")
 
 [node name="DialogBoxContainer" type="Panel" parent="."]
 offset_right = 1124.0
-offset_bottom = 113.0
+offset_bottom = 199.0
 
 [node name="DialogText" type="RichTextLabel" parent="DialogBoxContainer"]
 layout_mode = 0
 offset_left = 124.0
 offset_top = 11.0
 offset_right = 1107.0
-offset_bottom = 51.0
+offset_bottom = 144.0
 bbcode_enabled = true
 text = "Example text"
 
 [node name="Options" type="Node2D" parent="DialogBoxContainer"]
-position = Vector2(12, 30)
+position = Vector2(12, 122)
 
 [node name="ButtonOption1" type="Button" parent="DialogBoxContainer/Options"]
 visible = false
@@ -55,10 +55,10 @@ script = ExtResource("2_rf44u")
 [node name="NPCImage" type="TextureRect" parent="."]
 offset_left = 18.0
 offset_top = 15.0
-offset_right = 104.0
-offset_bottom = 95.0
+offset_right = 117.0
+offset_bottom = 185.0
 texture = SubResource("PlaceholderTexture2D_gfqgo")
-expand_mode = 2
+expand_mode = 1
 stretch_mode = 4
 
 [connection signal="pressed" from="DialogBoxContainer/Options/ButtonOption1" to="." method="_on_button_option_1_pressed"]

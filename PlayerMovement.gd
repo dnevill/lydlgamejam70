@@ -40,6 +40,9 @@ func _ready():
 	$PlayerAnimSprite.play(idle_anim)
 
 
+func GetFeatherParent():
+	return $PlayerAnimSprite
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_end"):
@@ -53,10 +56,14 @@ func _physics_process(delta):
 	if not in_dialog:
 		if Input.is_action_pressed("ui_left"):
 			$PlayerAnimSprite.flip_h = true;
+			for child in $PlayerAnimSprite.get_children():
+				child.flip_h = true
 			if linear_velocity.x > -MAXSPEED:
 				apply_central_force(Vector2(-HORZACCEL*delta,0))
 		elif Input.is_action_pressed("ui_right"):
 			$PlayerAnimSprite.flip_h = false;
+			for child in $PlayerAnimSprite.get_children():
+				child.flip_h = false
 			scale = Vector2(1,1)
 			if linear_velocity.x < MAXSPEED:
 				apply_central_force(Vector2(HORZACCEL*delta,0))

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://22veus0k2va2"]
+
+[ext_resource type="Texture2D" uid="uid://vl6jxkgrk6v3" path="res://Assets/Sprites/featherpickup1.png" id="1_idtn7"]
+
+[node name="FeatherBody" type="Sprite2D"]
+z_index = 2
+position = Vector2(0, 3)
+texture = ExtResource("1_idtn7")

@@ -7,6 +7,8 @@ var ready_to_interact = true;
 var waiting_to_interact = false;
 var disabledPlayer : Player = null
 var ready_to_launch_again = false
+const FEATHER_RIGID_BODY  = preload("res://Assets/NPCs/feather_rigid_body.tscn")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,6 +52,8 @@ func _on_dialog_option_selected(optionNumber):
 			$DialogSound.play()
 			$CPUParticles2DFeathers.emitting = true
 			$CPUParticles2DFeathers2.emitting = true
+			var feather1 = FEATHER_RIGID_BODY.instantiate()
+			disabledPlayer.GetFeatherParent().add_child(feather1)
 			var tween = get_tree().create_tween()
 			tween.tween_property($Sprite2D, "scale", Vector2(1,-1), 0.5)
 			tween.parallel().tween_property($Sprite2D, "position", Vector2.UP * 50, 0.5).as_relative().from_current()
