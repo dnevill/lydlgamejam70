@@ -8,9 +8,9 @@ var disabledPlayer = null
 
 func _on_area_2d_body_entered(body):
 	if (PlayerStateManager.OxFate == PlayerStateManager.OxFates.RELEASED):
-		dialogBox.SetDialogText("Here is some text about how you let the ox get away [color=red]oh nuuuuu[/color]")
+		dialogBox.SetDialogText("The Ox escaped and now this field remains barren! [color=red] [/color]")
 	else:
-		dialogBox.SetDialogText("Oh good my field got plowed. OH HAI MARK.")
+		dialogBox.SetDialogText("A farmer stands admiring the farmland. 'With the field plowed, a good harvest awaits!. Get ready for more work my good Ox.'")
 	dialogBox.SetOption1Text("Carry on")
 	#dialogBox.SetOption2Text("Knock over the bucket of fish")
 	#dialogBox.SetOption3Text("Knock over the fisherman")

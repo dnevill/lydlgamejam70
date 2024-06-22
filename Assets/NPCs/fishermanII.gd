@@ -8,11 +8,11 @@ var disabledPlayer = null
 
 func _on_area_2d_body_entered(body):
 	if (PlayerStateManager.FishermanFate == PlayerStateManager.FishermanFates.BUCKET_KNOCKED):
-		dialogBox.SetDialogText("A fox! A great omen, I must return my catch to the pond so that our waters remain healthy!")
+		dialogBox.SetDialogText("A fox! A great omen, I must throw some of the fish I catch back in the pond so that the pond grows even bigger fish!")
 	elif (PlayerStateManager.FishermanFate == PlayerStateManager.FishermanFates.FISHERMAN_KNOCKED):
-		dialogBox.SetDialogText("A fox! A great omen, I must give myself to the waters stocks remain healthy!")
+		dialogBox.SetDialogText("A fox! A great omen, I must give myself to the waters so fish stocks remain healthy!")
 	else:
-		dialogBox.SetDialogText("A fox! A dark omen, harbinger of the [color=red]CURSE OF FORGIES[/color]")
+		dialogBox.SetDialogText("A fox! A dark omen, harbinger of the [color=red]CURSE OF THE POND[/color]")
 	dialogBox.SetOption1Text("Carry on")
 	#dialogBox.SetOption2Text("Knock over the bucket of fish")
 	#dialogBox.SetOption3Text("Knock over the fisherman")
