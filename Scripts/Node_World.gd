@@ -42,7 +42,7 @@ func _on_World_ready():
 			if PlayerStateManager.FishermanFate == PlayerStateManager.FishermanFates.FISHERMAN_KNOCKED or PlayerStateManager.FishermanFate == PlayerStateManager.FishermanFates.BUCKET_KNOCKED:
 				newScene1 = W3_1fish
 			else:
-				newScene2 = W3_1frog
+				newScene1 = W3_1frog
 			
 			if PlayerStateManager.LumberjackAxeFate != PlayerStateManager.LumberjackAxeFates.GAVE:
 				newScene2 = W3_2forest
