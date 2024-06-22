@@ -18,7 +18,7 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	dialogBox.SetDialogText("Oh no, a fox! I've heard foxes are dangerous, pwease be nice.")
+	dialogBox.SetDialogText("You come across a goose by the forest pond. It might be able to help you cross the pond, but your tummy begins to rumble.")
 	dialogBox.SetOption1Text("Eat the goose")
 	dialogBox.SetOption2Text("Ask the goose to carry you")
 	dialogBox.SetOption3Text("Ignore the goose")

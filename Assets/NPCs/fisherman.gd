@@ -18,7 +18,7 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	dialogBox.SetDialogText("UwU I'm just a fishin' pal fishin' away at thes fishes :3")
+	dialogBox.SetDialogText("A fisherman! The pond must have fish big enough for them to catch now.")
 	dialogBox.SetOption1Text("Ask for a fish")
 	dialogBox.SetOption2Text("Knock over the bucket of fish")
 	dialogBox.SetOption3Text("Knock over the fisherman")

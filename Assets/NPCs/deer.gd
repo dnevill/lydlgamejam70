@@ -21,10 +21,10 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	dialogBox.SetDialogText("I'm so scared, I think one of the humans is looking for me. Which way are they coming from?")
-	dialogBox.SetOption1Text("Help the deer")
+	dialogBox.SetDialogText("You come across the most majestic deer in the forest.")
+	dialogBox.SetOption1Text("Warn the deer of the human by the pond")
 	dialogBox.SetOption2Text("Scare the deer")
-	dialogBox.SetOption3Text("Ignore them")
+	dialogBox.SetOption3Text("Ignore the deer")
 	if body.name == "PlayerRigidBody" and ready_to_interact:
 		ready_to_interact = false
 		print("Hey the player touched me OMGEEEEE lets spawn a dialogbox")

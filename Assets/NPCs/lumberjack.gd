@@ -18,10 +18,10 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	dialogBox.SetDialogText("Gimme my axe!")
-	dialogBox.SetOption1Text("Give the axe")
+	dialogBox.SetDialogText("A lumberjack stands in the forest, their axe stuck in a tree. You might be able to help them get it back.")
+	dialogBox.SetOption1Text("Help them get the axe")
 	dialogBox.SetOption2Text("Steal the axe")
-	dialogBox.SetOption3Text("Leave it in the tree")
+	dialogBox.SetOption3Text("Leave the axe in the tree")
 	dialogBox.SetPhoto($Sprite2D.texture)
 	if body.name == "PlayerRigidBody" and ready_to_interact:
 		ready_to_interact = false
