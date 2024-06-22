@@ -17,7 +17,7 @@ const W1_2 = preload("res://Scenes/Scene1-2forest.tscn")
 
 const W2_1 = preload("res://Scenes/Scene2-1pond.tscn")
 const W2_2forest = preload("res://Scenes/Scene2-2forest.tscn")
-const W2_2field = preload("res://Scenes/Scene2-2forest.tscn")
+const W2_2field = preload("res://Scenes/Scene2-2field.tscn")
 
 const W3_1fish = preload("res://Scenes/Scene3-1fish.tscn")
 const W3_1frog = preload("res://Scenes/Scene3-1frog.tscn")
