@@ -8,11 +8,11 @@ var disabledPlayer = null
 
 func _on_area_2d_body_entered(body):
 	if (PlayerStateManager.DeerFate == PlayerStateManager.DeerFates.HELPED):
-		dialogBox.SetDialogText("Something about how deer have avoided people maybe")
+		dialogBox.SetDialogText("You cross paths with a hunter in the forest. They ponder as they address you 'Deer haven't been seen in this forest for some time. I wonder if they have been warned of the humans in the area.'")
 	elif (PlayerStateManager.DeerFate == PlayerStateManager.DeerFates.SCARED):
-		dialogBox.SetDialogText("Something about how deer are extinct as they were too easy to hunt")
+		dialogBox.SetDialogText("You cross paths with a hunter in the forest. They see you and say 'Deer were so easy to hunt, they are no longer seen in this forest. Maybe I will start hunting foxes instead.'")
 	else:
-		dialogBox.SetDialogText("Some neutral fate regarding your deer interactions")
+		dialogBox.SetDialogText("You cross paths with a hunter in the forest. They seem to be focused on tracking a deer and ignore you.")
 	dialogBox.SetOption1Text("Carry on")
 	#dialogBox.SetOption2Text("Knock over the bucket of fish")
 	#dialogBox.SetOption3Text("Knock over the fisherman")
