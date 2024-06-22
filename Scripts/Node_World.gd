@@ -13,11 +13,11 @@ func _on_World_ready():
 	# Includes a scene after 30 tiles of main level, and another scene at the sublevel length in tiles beyond that
 	#
 
-	var newScene = load("res://Scenes/Scene2-1pond.tscn");
+	var newScene = load("res://Scenes/Scene1-1pond.tscn");
 	var newSceneInst = newScene.instantiate();
 	OtherSceneNode.add_child(newSceneInst);
 	newSceneInst.position.x = TILE_SIZE * 30;
-	var newScene2 = load("res://Scenes/Scene2-2forest.tscn");
+	var newScene2 = load("res://Scenes/Scene1-2forest.tscn");
 	var newSceneInst2 = newScene2.instantiate();
 	OtherSceneNode.add_child(newSceneInst2);
 	newSceneInst2.position.x = TILE_SIZE * SUBLEVEL_LENGTH + newSceneInst.position.x;
