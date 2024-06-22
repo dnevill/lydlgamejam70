@@ -4,11 +4,11 @@ enum GooseFates {DIDNT_MEET_YET, HELPED, ATE, IGNORED}
 enum LumberjackAxeFates {DIDNT_MEET_YET, GAVE, STOLE, LEFT}
 enum FishermanFates {DIDNT_MEET_YET, BUCKET_KNOCKED, FISHERMAN_KNOCKED, ASKED_FOR_FISH}
 enum DeerFates {DIDNT_MEET_YET, HELPED, SCARED, IGNORED}
-enum OxFates {DIDNT_MEET_YET, RELEASED, PLOWED}
-enum FishermanIIFates {DIDNT_MEET_YET, SOMETHING, SOMETHINGELSE}
-enum HunterFates {DIDNT_MEET_YET, SOMETHING, SOMETHINGELSE}
-enum FieldNPCFates {DIDNT_MEET_YET, SOMETHING, SOMETHINGELESE}
-enum FarmerFates {DIDNT_MEET_YET, SNEAKED_IN, DID_SOMETHING_CUTE}
+enum OxFates {DIDNT_MEET_YET, RELEASED, PLOWED, IGNORED}
+enum FishermanIIFates {DIDNT_MEET_YET, SOMETHING, SOMETHINGELSE, IGNORED}
+enum HunterFates {DIDNT_MEET_YET, SOMETHING, SOMETHINGELSE, IGNORED}
+enum FieldNPCFates {DIDNT_MEET_YET, SOMETHING, SOMETHINGELESE, IGNORED}
+enum FarmerFates {DIDNT_MEET_YET, SNEAKED_IN, DID_SOMETHING_CUTE, IGNORED}
 
 var cycleNum = 1
 
@@ -54,3 +54,22 @@ func resetfates():
 	HunterFate = HunterFates.DIDNT_MEET_YET
 	FieldNPCFate = FieldNPCFates.DIDNT_MEET_YET
 	FarmerFate = FarmerFates.DIDNT_MEET_YET
+
+func incrementfates():
+	adjustfatesbyx(1)
+	printfates()
+	
+func decrementfates():
+	adjustfatesbyx(-1)
+	printfates()
+	
+func adjustfatesbyx(x : int):
+	GooseFate += x
+	LumberjackAxeFate  += x
+	FishermanFate += x
+	DeerFate += x
+	OxFate += x
+	FishermanIIFate += x
+	HunterFate += x
+	FieldNPCFate += x
+	FarmerFate += x

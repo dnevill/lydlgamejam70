@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://rwcfqmnm42fu"]
+[gd_scene load_steps=13 format=3 uid="uid://rwcfqmnm42fu"]
 
 [ext_resource type="Script" path="res://Scripts/Node_World.gd" id="1_tohdx"]
 [ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="2_wcgcc"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://khg6c7a2fvde" path="res://Player.tscn" id="5_xiiox"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="6_f3ufo"]
 [ext_resource type="Shader" path="res://curved_fragment.gdshader" id="7_wet55"]
+[ext_resource type="PackedScene" uid="uid://cwe2fqmxqhng" path="res://Assets/NPCs/fisherman.tscn" id="8_1kicy"]
+[ext_resource type="PackedScene" uid="uid://tjxq87wps27u" path="res://Assets/NPCs/fishermanII.tscn" id="9_3o6co"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sga7q"]
 shader = ExtResource("7_wet55")
@@ -71,5 +73,11 @@ texture = SubResource("PlaceholderTexture2D_p1nhc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killplane"]
 shape = SubResource("WorldBoundaryShape2D_n04s4")
+
+[node name="Fisherman" parent="." instance=ExtResource("8_1kicy")]
+position = Vector2(944, -228)
+
+[node name="FishermanII" parent="." instance=ExtResource("9_3o6co")]
+position = Vector2(234, -226)
 
 [connection signal="ready" from="." to="." method="_on_World_ready"]

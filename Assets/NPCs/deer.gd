@@ -8,7 +8,6 @@ var disabledPlayer = null
 var myFate = PlayerStateManager.DeerFate
 var myFates = PlayerStateManager.DeerFates
 
-@onready var tween = Tween
 #$enum DeerFates {DIDNT_MEET_YET, HELPED, SCARED, IGNORED}
 # Called when the node enters the scene tree for the first time.
 func _ready():

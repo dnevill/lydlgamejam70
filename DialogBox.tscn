@@ -18,12 +18,14 @@ offset_left = 124.0
 offset_top = 11.0
 offset_right = 1107.0
 offset_bottom = 51.0
+bbcode_enabled = true
 text = "Example text"
 
 [node name="Options" type="Node2D" parent="DialogBoxContainer"]
 position = Vector2(12, 30)
 
 [node name="ButtonOption1" type="Button" parent="DialogBoxContainer/Options"]
+visible = false
 offset_left = 123.0
 offset_top = 37.0
 offset_right = 422.0
@@ -32,6 +34,7 @@ focus_neighbor_right = NodePath("../ButtonOption2")
 script = ExtResource("2_rf44u")
 
 [node name="ButtonOption2" type="Button" parent="DialogBoxContainer/Options"]
+visible = false
 offset_left = 457.0
 offset_top = 37.0
 offset_right = 775.0
@@ -41,6 +44,7 @@ focus_neighbor_right = NodePath("../ButtonOption3")
 script = ExtResource("2_rf44u")
 
 [node name="ButtonOption3" type="Button" parent="DialogBoxContainer/Options"]
+visible = false
 offset_left = 833.0
 offset_top = 37.0
 offset_right = 1087.0
