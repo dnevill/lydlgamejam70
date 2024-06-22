@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://drl7cmnaeca1e"]
 
-[ext_resource type="Script" path="res://Assets/NPCs/fishermanII.gd" id="1_yvpbn"]
-[ext_resource type="Texture2D" uid="uid://y3w5pjl357q" path="res://Assets/Sprites/fishermanII.png" id="2_txsad"]
+[ext_resource type="Script" path="res://Assets/NPCs/hunter.gd" id="1_pvduy"]
+[ext_resource type="Texture2D" uid="uid://cflunjvqnbjx5" path="res://Assets/Sprites/hunter.png" id="2_fdxua"]
 [ext_resource type="PackedScene" uid="uid://b780hw38aude7" path="res://DialogBox.tscn" id="3_okwsh"]
 [ext_resource type="AudioStream" uid="uid://dod028x04exuo" path="res://Assets/SFX/human_complaining.ogg" id="4_rcn7l"]
 [ext_resource type="AudioStream" uid="uid://1q5bc6th7j07" path="res://Assets/SFX/human_low_huh.ogg" id="5_6lth6"]
@@ -78,9 +78,9 @@ _data = {
 radius = 18.4761
 height = 64.0
 
-[node name="FishermanII" type="Node2D"]
+[node name="Hunter" type="Node2D"]
 scale = Vector2(2, 2)
-script = ExtResource("1_yvpbn")
+script = ExtResource("1_pvduy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
@@ -89,7 +89,7 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_txsad")
+texture = ExtResource("2_fdxua")
 
 [node name="Area2D" type="Area2D" parent="."]
 

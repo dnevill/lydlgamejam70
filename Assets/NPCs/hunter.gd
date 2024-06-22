@@ -7,12 +7,12 @@ var disabledPlayer = null
 
 
 func _on_area_2d_body_entered(body):
-	if (PlayerStateManager.FishermanFate == PlayerStateManager.FishermanFates.BUCKET_KNOCKED):
-		dialogBox.SetDialogText("A fox! A great omen, I must return my catch to the pond so that our waters remain healthy!")
-	elif (PlayerStateManager.FishermanFate == PlayerStateManager.FishermanFates.FISHERMAN_KNOCKED):
-		dialogBox.SetDialogText("A fox! A great omen, I must give myself to the waters stocks remain healthy!")
+	if (PlayerStateManager.DeerFate == PlayerStateManager.DeerFates.HELPED):
+		dialogBox.SetDialogText("Something about how deer have avoided people maybe")
+	elif (PlayerStateManager.DeerFate == PlayerStateManager.DeerFates.SCARED):
+		dialogBox.SetDialogText("Something about how deer are extinct as they were too easy to hunt")
 	else:
-		dialogBox.SetDialogText("A fox! A dark omen, harbinger of the [color=red]CURSE OF FORGIES[/color]")
+		dialogBox.SetDialogText("Some neutral fate regarding your deer interactions")
 	dialogBox.SetOption1Text("Carry on")
 	#dialogBox.SetOption2Text("Knock over the bucket of fish")
 	#dialogBox.SetOption3Text("Knock over the fisherman")
@@ -39,25 +39,6 @@ func _on_dialog_option_selected(optionNumber):
 	match optionNumber:
 		1:
 			print("*nods*")
-			PlayerStateManager.FishermanIIFate = PlayerStateManager.FishermanIIFates.SOMETHING
-			if (PlayerStateManager.FishermanFate == PlayerStateManager.FishermanFates.BUCKET_KNOCKED):
-				var tween = get_tree().create_tween()
-				tween.tween_property($Sprite2D, "position", Vector2.LEFT * 4000, 20).as_relative().from_current()
-				tween.tween_callback(queue_free)
-			elif (PlayerStateManager.FishermanFate == PlayerStateManager.FishermanFates.FISHERMAN_KNOCKED):
-				var tween = get_tree().create_tween()
-				tween.tween_property($Sprite2D, "position", Vector2.UP * 75 + Vector2.RIGHT * 100, 0.5).as_relative().from_current()
-				tween.tween_property($Sprite2D, "position", Vector2.DOWN * 4000 + Vector2.RIGHT * 1000, 20).as_relative()
-				tween.tween_callback(queue_free)
-			else:
-				#Well, he was either ignored or we asked for a fish and now there's 3 billion frogs and no fish so
-				var tween = get_tree().create_tween()
-				tween.tween_property($Sprite2D, "modulate", Color.RED, 0.5)
-				tween.tween_property($Sprite2D, "modulate", Color.WHITE, 0.5)
-				tween.tween_property($Sprite2D, "modulate", Color.RED, 0.5)
-				tween.tween_property($Sprite2D, "modulate", Color.WHITE, 0.5)
-				tween.tween_property($Sprite2D, "modulate", Color.RED, 0.5)
-				tween.tween_property($Sprite2D, "modulate", Color.WHITE, 0.5)
 				
 	ready_to_interact = false
 	dialogBox.visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://rwcfqmnm42fu"]
+[gd_scene load_steps=19 format=3 uid="uid://rwcfqmnm42fu"]
 
 [ext_resource type="Script" path="res://Scripts/Node_World.gd" id="1_tohdx"]
 [ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="2_wcgcc"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://b6uh01pqb4qvv" path="res://Assets/NPCs/deer.tscn" id="11_1ie6u"]
 [ext_resource type="PackedScene" uid="uid://kvgvhbf76kir" path="res://Assets/NPCs/lumberjack.tscn" id="12_lgbni"]
 [ext_resource type="PackedScene" uid="uid://cj4lw86a3m16s" path="res://Assets/NPCs/ox.tscn" id="13_2iuph"]
+[ext_resource type="PackedScene" uid="uid://drl7cmnaeca1e" path="res://Assets/NPCs/hunter.tscn" id="14_28fux"]
+[ext_resource type="PackedScene" uid="uid://jruyniaus0ya" path="res://Assets/NPCs/farmer.tscn" id="15_ffuyk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sga7q"]
 shader = ExtResource("7_wet55")
@@ -79,25 +81,31 @@ texture = SubResource("PlaceholderTexture2D_p1nhc")
 shape = SubResource("WorldBoundaryShape2D_n04s4")
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(761, 0)
-
-[node name="Fisherman" parent="Node2D" instance=ExtResource("8_1kicy")]
-position = Vector2(630, -300)
-
-[node name="FishermanII" parent="Node2D" instance=ExtResource("9_3o6co")]
-position = Vector2(1068, -231)
+position = Vector2(123, 27)
 
 [node name="Goose" parent="Node2D" instance=ExtResource("10_y6jqo")]
 position = Vector2(184, -194)
 scale = Vector2(2, 2)
 
-[node name="Deer" parent="Node2D" instance=ExtResource("11_1ie6u")]
-position = Vector2(758, -276)
-
 [node name="Lumberjack" parent="Node2D" instance=ExtResource("12_lgbni")]
 position = Vector2(293, -220)
 
+[node name="Fisherman" parent="Node2D" instance=ExtResource("8_1kicy")]
+position = Vector2(446, -221)
+
+[node name="Deer" parent="Node2D" instance=ExtResource("11_1ie6u")]
+position = Vector2(583, -204)
+
 [node name="Ox" parent="Node2D" instance=ExtResource("13_2iuph")]
-position = Vector2(903, -200)
+position = Vector2(732, -196)
+
+[node name="FishermanII" parent="Node2D" instance=ExtResource("9_3o6co")]
+position = Vector2(886, -215)
+
+[node name="Hunter" parent="Node2D" instance=ExtResource("14_28fux")]
+position = Vector2(1129, -216)
+
+[node name="Farmer" parent="Node2D" instance=ExtResource("15_ffuyk")]
+position = Vector2(1006, -213)
 
 [connection signal="ready" from="." to="." method="_on_World_ready"]
