@@ -1,7 +1,7 @@
 class_name Player extends RigidBody2D
 
 const HORZACCEL = 60000
-const VERTACCEL = 500
+var vertaccel = 500
 const MAXSPEED = 250 #This is just the max the player can accelerate to using their own inputs, not a physics limit
 
 var is_grounded = true;
@@ -11,7 +11,34 @@ var teleport_position = null
 
 var has_lingering_jump = false
 
+
+var idle_anim = "idle"
+var walk_anim = "walk"
+var jump_anim = "jump"
+
+
+
 @onready var start_position = self.position
+
+
+func _ready():
+	if PlayerStateManager.cycleNum > 1:
+		if PlayerStateManager.GooseFate == PlayerStateManager.GooseFates.HELPED:
+			idle_anim = "idle_winged"
+			walk_anim = "walk_winged"
+			jump_anim = "jump_winged"
+			vertaccel = 750
+		elif PlayerStateManager.GooseFate == PlayerStateManager.GooseFates.ATE:
+			idle_anim = "idle_griffox"
+			walk_anim = "walk_griffox"
+			jump_anim = "jump_griffox"
+			gravity_scale = 0.5
+		else:
+			idle_anim = "idle"
+			walk_anim = "walk"
+			jump_anim = "jump"
+	$PlayerAnimSprite.play(idle_anim)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -38,16 +65,16 @@ func _physics_process(delta):
 			#var movementVector = player.
 		if Input.is_action_just_pressed("ui_up") and is_on_floor():
 			#start some jump animation
-			$PlayerAnimSprite.play("jump")
+			$PlayerAnimSprite.play(jump_anim)
 			$JumpSFX.play()
 			#print("You jumped! and " + str(is_on_floor()))
 			#This is a 'just pressed' so we use an impulse, we don't care about integrating across frames
-			apply_central_impulse(Vector2(0,-VERTACCEL))
+			apply_central_impulse(Vector2(0,-vertaccel))
 			is_grounded = false;
 			has_lingering_jump = false
 		elif is_on_floor():
 			if abs(linear_velocity.x) > 1:
-				$PlayerAnimSprite.play("walk")
+				$PlayerAnimSprite.play(walk_anim)
 				$IdleTimer.stop()
 				if $WalkNoiseTimer.is_stopped():
 					$WalkSFX.play()
@@ -87,4 +114,8 @@ func _integrate_forces(state):
 
 func _on_idle_timer_timeout():
 	if abs(linear_velocity.x) < 1 and is_grounded:
-		$PlayerAnimSprite.play("idle") # Replace with function body.
+		$PlayerAnimSprite.play(idle_anim) # Replace with function body.
+
+
+func _on_player_anim_sprite_ready():
+	$PlayerAnimSprite.play(idle_anim)
