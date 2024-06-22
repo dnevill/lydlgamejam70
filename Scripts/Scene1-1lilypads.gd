@@ -9,7 +9,7 @@ var timetomove = COOLDOWN;
 func _ready():
 	pass;
 
-func _process(delta):
+func _process(_delta):
 	#
 	#	Lilypads erratically move up and down.
 	#
