@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 PlayerStateManager="*res://PlayerStateManager.gd"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/dnevi/Dropbox/My PC (DESKTOP-0CGNTLR)/Documents/recording.avi"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
