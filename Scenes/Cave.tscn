@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://r2adj1l4ep6r"]
+[gd_scene load_steps=11 format=3 uid="uid://r2adj1l4ep6r"]
 
 [ext_resource type="TileSet" uid="uid://bh13703t5d8jy" path="res://Assets/Tiles/tileset.tres" id="1_blqel"]
 [ext_resource type="Script" path="res://Scripts/Cave.gd" id="1_o1gbn"]
 [ext_resource type="Texture2D" uid="uid://cmapb1w07lipk" path="res://Assets/Icons/left.png" id="3_iushw"]
+[ext_resource type="PackedScene" uid="uid://vbtxtd80qp3i" path="res://Scenes/fade_out_in.tscn" id="4_tlto8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj1ms"]
 size = Vector2(32, 640)
@@ -94,6 +95,8 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorwayArea"]
 shape = SubResource("RectangleShape2D_xcibv")
 debug_color = Color(0.0891445, 0, 0.942267, 0.419608)
+
+[node name="FadeOutIn" parent="." instance=ExtResource("4_tlto8")]
 
 [connection signal="body_entered" from="WarningArea" to="." method="_on_warning_area_body_entered"]
 [connection signal="body_exited" from="WarningArea" to="." method="_on_warning_area_body_exited"]

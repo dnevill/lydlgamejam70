@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dwpoqtqw5m8r2"]
+[gd_scene load_steps=23 format=3 uid="uid://dwpoqtqw5m8r2"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_6q24q"]
 [ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="2_ayun7"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://c863hh2coen1q" path="res://Assets/UI/reset_focused.png" id="17_lgpt4"]
 [ext_resource type="Texture2D" uid="uid://c8tv8r5ibmrlx" path="res://Assets/UI/reset_hover.png" id="18_irbg0"]
 [ext_resource type="Texture2D" uid="uid://d2s55mku7gfcx" path="res://Assets/UI/Forest Foxlore.png" id="21_ulidx"]
+[ext_resource type="PackedScene" uid="uid://vbtxtd80qp3i" path="res://Scenes/fade_out_in.tscn" id="22_7b4rw"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -165,6 +166,10 @@ offset_top = 22.0
 offset_right = 1051.0
 offset_bottom = 225.0
 texture = ExtResource("21_ulidx")
+
+[node name="FadeOutIn" parent="." instance=ExtResource("22_7b4rw")]
+layout_mode = 1
+mouse_filter = 2
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]

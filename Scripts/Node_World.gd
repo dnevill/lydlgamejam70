@@ -33,6 +33,8 @@ var fg_forest = preload("res://Assets/Backgrounds/forest_background_2.png")
 var bg_no_forest = preload("res://Assets/Backgrounds/no_forest_background_1.png")
 var fg_no_forest = preload("res://Assets/Backgrounds/no_forest_background_2.png")
 
+@onready var fader = $FadeOutIn
+
 func _on_World_ready():
 	if PlayerStateManager.LumberjackAxeFate == PlayerStateManager.LumberjackAxeFates.GAVE:
 		print("LumberjackAxeFate: " + PlayerStateManager.LumberjackAxeFates.find_key(PlayerStateManager.LumberjackAxeFate) + " so we are swapping to the other parallax layers")
@@ -80,5 +82,11 @@ func _on_World_ready():
 	var newCaveInst = WCAVE.instantiate();
 	OtherSceneNode.add_child(newCaveInst);
 	newCaveInst.position.x = newSceneInst2.position.x + (TILE_SIZE * SUBLEVEL_LENGTH);
-	
-	pass;
+	$PlayerRigidBody.freeze = true
+	fader.visible = true
+	fader.FadeIn()
+
+
+func _on_fade_out_in_done_fading_in():
+	$PlayerRigidBody.freeze = false
+	fader.visible = false

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyiexf6ktddth"]
+[gd_scene load_steps=6 format=3 uid="uid://cyiexf6ktddth"]
 
 [ext_resource type="Texture2D" uid="uid://rdc3plft4q88" path="res://Assets/Backgrounds/campfire.png" id="1_2nwxp"]
 [ext_resource type="Script" path="res://Scenes/campfire_interstitial.gd" id="1_vofko"]
 [ext_resource type="Texture2D" uid="uid://dkcmat18ko0ke" path="res://Assets/Backgrounds/campfire_fg.png" id="2_0lvx8"]
 [ext_resource type="AudioStream" uid="uid://bulv60l0l87nw" path="res://Assets/SFX/campfire.ogg" id="3_6ddxr"]
+[ext_resource type="PackedScene" uid="uid://vbtxtd80qp3i" path="res://Scenes/fade_out_in.tscn" id="5_0848l"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -51,4 +52,9 @@ autoplay = true
 wait_time = 10.0
 one_shot = true
 
+[node name="FadeOutIn" parent="." instance=ExtResource("5_0848l")]
+z_index = 3
+layout_mode = 1
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="done_fading_out" from="FadeOutIn" to="." method="_on_fade_out_in_done_fading_out"]
