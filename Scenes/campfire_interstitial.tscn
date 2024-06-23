@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyiexf6ktddth"]
+
+[ext_resource type="Texture2D" uid="uid://rdc3plft4q88" path="res://Assets/Backgrounds/campfire.png" id="1_2nwxp"]
+[ext_resource type="Script" path="res://Scenes/campfire_interstitial.gd" id="1_vofko"]
+[ext_resource type="Texture2D" uid="uid://dkcmat18ko0ke" path="res://Assets/Backgrounds/campfire_fg.png" id="2_0lvx8"]
+[ext_resource type="AudioStream" uid="uid://bulv60l0l87nw" path="res://Assets/SFX/campfire.ogg" id="3_6ddxr"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vofko")
+
+[node name="campfire" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_2nwxp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(563, 480)
+amount = 2
+lifetime = 0.25
+explosiveness = 0.23
+randomness = 0.6
+emission_shape = 1
+emission_sphere_radius = 40.7
+direction = Vector2(0, -1)
+spread = 90.0
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color = Color(0.85098, 0.341176, 0.388235, 1)
+
+[node name="campfire2" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_0lvx8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6ddxr")
+autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
