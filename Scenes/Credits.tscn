@@ -1,12 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://clwrf77gum46n"]
+[gd_scene load_steps=15 format=3 uid="uid://clwrf77gum46n"]
 
 [ext_resource type="Script" path="res://Scripts/Credits.gd" id="1_wcrmk"]
 [ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="2_1i26j"]
 [ext_resource type="Texture2D" uid="uid://cvfray8h8jxoj" path="res://Assets/Backgrounds/forest_background_2.png" id="3_jx3pf"]
 [ext_resource type="Texture2D" uid="uid://db5rjsqj2l1aj" path="res://Assets/UI/back.png" id="4_bvbon"]
+[ext_resource type="Texture2D" uid="uid://q6g0lk67sjdr" path="res://Assets/Sprites/fox_idle.png" id="4_cpnrt"]
+[ext_resource type="Texture2D" uid="uid://v380unbjqhg0" path="res://Assets/Sprites/frogs_idle.png" id="5_03wo2"]
+[ext_resource type="Texture2D" uid="uid://gh3itaxw56hq" path="res://Assets/Sprites/deer_idle.png" id="6_ar65u"]
+[ext_resource type="Texture2D" uid="uid://bgaf3gknadmv8" path="res://Assets/Sprites/fish_in_bucket.png" id="7_6ca13"]
+[ext_resource type="Texture2D" uid="uid://dcynep724f3qb" path="res://Assets/Sprites/Goose_idle.png.png" id="8_lhaol"]
+[ext_resource type="Texture2D" uid="uid://cxwjpj01c53tb" path="res://Assets/Sprites/farmer.png" id="9_eitjv"]
+[ext_resource type="Texture2D" uid="uid://4dr0niiuicyl" path="res://Assets/Sprites/ox.png" id="10_l2h5a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_74dcc"]
 font_size = 32
+outline_size = 6
+outline_color = Color(0, 0.4, 0, 1)
+shadow_color = Color(0, 0.109804, 0, 1)
+shadow_offset = Vector2(4, 3)
+
+[sub_resource type="Animation" id="Animation_na81s"]
+resource_name = "CreditsRoll"
+length = 25.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StageNode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(725, 646), Vector2(725, -1400)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kxqjw"]
+_data = {
+"CreditsRoll": SubResource("Animation_na81s")
+}
 
 [node name="RootNode" type="Control"]
 layout_mode = 3
@@ -62,64 +95,114 @@ position = Vector2(0, 200)
 metadata/_edit_lock_ = true
 
 [node name="BlackBoxTop" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -9.0
 offset_top = -15.0
 offset_right = 1166.0
 offset_bottom = 107.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="BlackBoxBottom" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -10.0
 offset_top = 243.0
 offset_right = 1165.0
 offset_bottom = 662.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="StageNode" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 575.0
+offset_left = 725.0
 offset_top = 646.0
-offset_right = 575.0
+offset_right = 725.0
 offset_bottom = 646.0
 
-[node name="Label" type="Label" parent="StageNode"]
+[node name="BunchOfNames" type="Label" parent="StageNode"]
 layout_mode = 0
 offset_left = -300.0
 offset_right = 300.0
 offset_bottom = 525.0
 text = "Forest Foxlore
-A Wild Godot Jam Game
+A Godot Wild Jam Game
 
 
-person name
-person role
+Programming
+Delvan Neville
 
-person name
-person role
+Character Art
+frogsye
 
-person name
-person role
+Level Design
+GreenCastleB
 
-person name
-person role
+User Interface
+extremelymild
 
-person name
-person role
+Audio Design
+signal
 
-person name
-person role
+Background Art
+Ethan Yanyo
 
-person name
-person role"
+Playtesting
+MeekRhino
+
+
+Thanks for playing <3"
 label_settings = SubResource("LabelSettings_74dcc")
 horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="FoxSprite" type="Sprite2D" parent="StageNode"]
+position = Vector2(234, 239)
+scale = Vector2(2, 2)
+texture = ExtResource("4_cpnrt")
+
+[node name="ForgsSprite" type="Sprite2D" parent="StageNode"]
+position = Vector2(-248, 387)
+scale = Vector2(2, 2)
+texture = ExtResource("5_03wo2")
+
+[node name="DeerSprite" type="Sprite2D" parent="StageNode"]
+position = Vector2(234, 524)
+scale = Vector2(2, 2)
+texture = ExtResource("6_ar65u")
+
+[node name="FishSprite" type="Sprite2D" parent="StageNode"]
+position = Vector2(-245, 654)
+scale = Vector2(0.953125, 0.953125)
+texture = ExtResource("7_6ca13")
+
+[node name="GooseSprite" type="Sprite2D" parent="StageNode"]
+position = Vector2(234, 823)
+scale = Vector2(-2, 2)
+texture = ExtResource("8_lhaol")
+
+[node name="FarmerSprite" type="Sprite2D" parent="StageNode"]
+position = Vector2(-246, 960)
+scale = Vector2(2, 2)
+texture = ExtResource("9_eitjv")
+
+[node name="OxSprite" type="Sprite2D" parent="StageNode"]
+position = Vector2(239, 1103)
+scale = Vector2(2, 2)
+texture = ExtResource("10_l2h5a")
+
+[node name="StageAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kxqjw")
+}
 
 [node name="BackBtn" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 535.0
 offset_right = 254.0
 offset_bottom = 619.0
 texture_normal = ExtResource("4_bvbon")
 stretch_mode = 0
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_pressed"]
