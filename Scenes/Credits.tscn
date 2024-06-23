@@ -1,0 +1,125 @@
+[gd_scene load_steps=6 format=3 uid="uid://clwrf77gum46n"]
+
+[ext_resource type="Script" path="res://Scripts/Credits.gd" id="1_wcrmk"]
+[ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="2_1i26j"]
+[ext_resource type="Texture2D" uid="uid://cvfray8h8jxoj" path="res://Assets/Backgrounds/forest_background_2.png" id="3_jx3pf"]
+[ext_resource type="Texture2D" uid="uid://db5rjsqj2l1aj" path="res://Assets/UI/back.png" id="4_bvbon"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_74dcc"]
+font_size = 32
+
+[node name="RootNode" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wcrmk")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(0, -275)
+transform = Transform2D(1, 0, 0, 1, 0, -275)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(42, 538)
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(2304, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, 200)
+texture = ExtResource("2_1i26j")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(72, 538)
+motion_scale = Vector2(0.08, 0.08)
+motion_mirroring = Vector2(2816, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(0, 200)
+texture = ExtResource("3_jx3pf")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+position = Vector2(42, 538)
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(2304, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(0, 200)
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+position = Vector2(72, 538)
+motion_scale = Vector2(0.08, 0.08)
+motion_mirroring = Vector2(2816, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(0, 200)
+metadata/_edit_lock_ = true
+
+[node name="BlackBoxTop" type="ColorRect" parent="."]
+offset_left = -9.0
+offset_top = -15.0
+offset_right = 1166.0
+offset_bottom = 107.0
+color = Color(0, 0, 0, 1)
+
+[node name="BlackBoxBottom" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = 243.0
+offset_right = 1165.0
+offset_bottom = 662.0
+color = Color(0, 0, 0, 1)
+
+[node name="StageNode" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 575.0
+offset_top = 646.0
+offset_right = 575.0
+offset_bottom = 646.0
+
+[node name="Label" type="Label" parent="StageNode"]
+layout_mode = 0
+offset_left = -300.0
+offset_right = 300.0
+offset_bottom = 525.0
+text = "Forest Foxlore
+A Wild Godot Jam Game
+
+
+person name
+person role
+
+person name
+person role
+
+person name
+person role
+
+person name
+person role
+
+person name
+person role
+
+person name
+person role
+
+person name
+person role"
+label_settings = SubResource("LabelSettings_74dcc")
+horizontal_alignment = 1
+
+[node name="BackBtn" type="TextureButton" parent="."]
+offset_left = 30.0
+offset_top = 535.0
+offset_right = 254.0
+offset_bottom = 619.0
+texture_normal = ExtResource("4_bvbon")
+stretch_mode = 0
+
+[connection signal="pressed" from="BackBtn" to="." method="_on_back_pressed"]

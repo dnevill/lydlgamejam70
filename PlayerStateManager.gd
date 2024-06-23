@@ -1,6 +1,6 @@
 extends Node2D
 
-
+var creditsPBGoffset = 0; # to stash parallax bg offset
 var endScene = preload("res://Scenes/main_menu.tscn")
 
 enum GooseFates {DIDNT_MEET_YET, HELPED, ATE, IGNORED}
