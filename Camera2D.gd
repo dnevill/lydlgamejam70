@@ -10,10 +10,6 @@ func _ready():
 	pass;
 
 func _process(_delta):
-	# debug
-	if Input.is_action_just_pressed("ui_page_down"):
-		print("camera x = "+str(self.position.x));
-	
 	# adjust position, within bounds
 	self.position.x = max(LEFT_BOUNDS,min(player_rigid_body.position.x,RIGHT_BOUNDS));
 	self.position.y = max(UPPER_BOUNDS,min(player_rigid_body.position.y,LOWER_BOUNDS));

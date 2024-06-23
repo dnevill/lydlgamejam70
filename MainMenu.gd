@@ -47,6 +47,5 @@ func _on_start_pressed():
 	await fader.done_fading_out	
 	get_tree().change_scene_to_packed(gameScene)
 
-
 func _on_fade_out_in_done_fading_out():
-	pass # Replace with function body.
+	pass;

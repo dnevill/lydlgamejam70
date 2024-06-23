@@ -37,11 +37,13 @@ var fg_no_forest = preload("res://Assets/Backgrounds/no_forest_background_2.png"
 
 func _on_World_ready():
 	if PlayerStateManager.LumberjackAxeFate == PlayerStateManager.LumberjackAxeFates.GAVE:
-		print("LumberjackAxeFate: " + PlayerStateManager.LumberjackAxeFates.find_key(PlayerStateManager.LumberjackAxeFate) + " so we are swapping to the other parallax layers")
+		if (PlayerStateManager.DEBUG):
+			print("LumberjackAxeFate: " + PlayerStateManager.LumberjackAxeFates.find_key(PlayerStateManager.LumberjackAxeFate) + " so we are swapping to the other parallax layers")
 		$ParallaxBackground/ParallaxLayer/Sprite2D.texture = bg_no_forest
 		$ParallaxBackground/ParallaxLayer2/Sprite2D.texture = fg_no_forest
 	else:
-		print("LumberjackAxeFate: " + PlayerStateManager.LumberjackAxeFates.find_key(PlayerStateManager.LumberjackAxeFate) + " so we are using the OG parallax layers")
+		if (PlayerStateManager.DEBUG):
+			print("LumberjackAxeFate: " + PlayerStateManager.LumberjackAxeFates.find_key(PlayerStateManager.LumberjackAxeFate) + " so we are using the OG parallax layers")
 		$ParallaxBackground/ParallaxLayer/Sprite2D.texture = bg_forest
 		$ParallaxBackground/ParallaxLayer2/Sprite2D.texture = fg_forest
 

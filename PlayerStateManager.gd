@@ -1,8 +1,8 @@
 extends Node2D
 
+var DEBUG = false; # make true to enable console output
 var creditsPBGoffset = 0; # to stash parallax bg offset
 var endScene = preload("res://Scenes/campfire_interstitial.tscn")
-
 
 enum GooseFates {DIDNT_MEET_YET, HELPED, ATE, IGNORED}
 enum LumberjackAxeFates {DIDNT_MEET_YET, GAVE, STOLE, LEFT}
@@ -51,16 +51,17 @@ func EndCycle(loopCycleToStart = false):
 	get_tree().change_scene_to_packed(endScene)
 
 func printfates():
-	print("Cyclenumber: " + str(cycleNum))
-	print("GooseFate: " + GooseFates.find_key(GooseFate))
-	print("LumberjackAxeFate: " + LumberjackAxeFates.find_key(LumberjackAxeFate))
-	print("FishermanFate: " + FishermanFates.find_key(FishermanFate))
-	print("DeerFate: " + DeerFates.find_key(DeerFate))
-	print("OxFate: " + OxFates.find_key(OxFate))
-	print("FishermanIIFate: " + FishermanIIFates.find_key(FishermanIIFate))
-	print("HunterFate: " + HunterFates.find_key(HunterFate))
-	print("FieldNPCFate: " + FieldNPCFates.find_key(FieldNPCFate))
-	print("FarmerFate: " + FarmerFates.find_key(FarmerFate))
+	if(DEBUG):
+		print("Cyclenumber: " + str(cycleNum))
+		print("GooseFate: " + GooseFates.find_key(GooseFate))
+		print("LumberjackAxeFate: " + LumberjackAxeFates.find_key(LumberjackAxeFate))
+		print("FishermanFate: " + FishermanFates.find_key(FishermanFate))
+		print("DeerFate: " + DeerFates.find_key(DeerFate))
+		print("OxFate: " + OxFates.find_key(OxFate))
+		print("FishermanIIFate: " + FishermanIIFates.find_key(FishermanIIFate))
+		print("HunterFate: " + HunterFates.find_key(HunterFate))
+		print("FieldNPCFate: " + FieldNPCFates.find_key(FieldNPCFate))
+		print("FarmerFate: " + FarmerFates.find_key(FarmerFate))
 
 func resetfates():
 	cycleNum = 1
