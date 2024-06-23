@@ -18,10 +18,36 @@ func SetPhoto(input_texture : Texture):
 	$NPCImage.texture = input_texture
 
 func Reveal():
+	#update_text_scale()
+	update_text_scale_target($DialogBoxContainer/DialogText)
 	visible = true
 	$DialogBoxContainer/Options/ButtonOption3.grab_focus()
 	$DialogBoxContainer/Options/ButtonOption2.grab_focus()
 	$DialogBoxContainer/Options/ButtonOption1.grab_focus()
+
+func update_text_scale():
+	var font_size = $DialogBoxContainer/DialogText.get_theme_font_size("normal_font_size")
+	while $DialogBoxContainer/DialogText.get_content_height() < $DialogBoxContainer/DialogText.size.y and font_size < 96:
+		print("growin" + str($DialogBoxContainer/DialogText.get_content_height()) + "," + str($DialogBoxContainer/DialogText.size.y) + "," + str(font_size))
+		font_size += 1
+		$DialogBoxContainer/DialogText.add_theme_font_size_override("normal_font_size", font_size)
+	while $DialogBoxContainer/DialogText.get_content_height() > $DialogBoxContainer/DialogText.size.y and font_size > 8:
+		print("shrinkin" + str($DialogBoxContainer/DialogText.get_content_height()) + "," + str($DialogBoxContainer/DialogText.size.y) + "," + str(font_size))
+		font_size -= 1
+		$DialogBoxContainer/DialogText.add_theme_font_size_override("normal_font_size", font_size)
+
+
+
+func update_text_scale_target(labelname):
+	var font_size = labelname.get_theme_font_size("normal_font_size")
+	while labelname.get_content_height() < labelname.size.y and font_size < 96:
+		print("growin" + str(labelname.get_content_height()) + "," + str(labelname.size.y) + "," + str(font_size))
+		font_size += 1
+		labelname.add_theme_font_size_override("normal_font_size", font_size)
+	while labelname.get_content_height() > labelname.size.y and font_size > 8:
+		print("shrinkin" + str(labelname.get_content_height()) + "," + str(labelname.size.y) + "," + str(font_size))
+		font_size -= 1
+		labelname.add_theme_font_size_override("normal_font_size", font_size)
 
 signal option_selected(optionNumber : int)
 
