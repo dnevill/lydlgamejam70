@@ -69,9 +69,8 @@ _data = {
 "shake quarter sec": SubResource("Animation_ct6dl")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_22iew"]
-radius = 24.5
-height = 71.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5orx"]
+size = Vector2(36.5, 57.5)
 
 [node name="Ox" type="Node2D"]
 scale = Vector2(2, 2)
@@ -89,9 +88,9 @@ texture = ExtResource("2_7sg37")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(4.5, -1.5)
+position = Vector2(4.74999, 2.25)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_22iew")
+shape = SubResource("RectangleShape2D_n5orx")
 
 [node name="Dialog" parent="." instance=ExtResource("3_darah")]
 visible = false
