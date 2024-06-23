@@ -63,13 +63,13 @@ func _physics_process(delta):
 	#	PlayerStateManager.decrementfates()
 	freeze = in_dialog
 	if not in_dialog:
-		if Input.is_action_pressed("ui_left"):
+		if Input.is_action_pressed("foxy_left"):
 			$PlayerAnimSprite.flip_h = true;
 			for child in $PlayerAnimSprite.get_children():
 				child.flip_h = true
 			if linear_velocity.x > -MAXSPEED:
 				apply_central_force(Vector2(-HORZACCEL*delta,0))
-		elif Input.is_action_pressed("ui_right"):
+		elif Input.is_action_pressed("foxy_right"):
 			$PlayerAnimSprite.flip_h = false;
 			for child in $PlayerAnimSprite.get_children():
 				child.flip_h = false
@@ -79,7 +79,7 @@ func _physics_process(delta):
 		#else:
 			#No left/right input, so we should start damping our movement back down
 			#var movementVector = player.
-		if (Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_accept")) and is_on_floor():
+		if (Input.is_action_just_pressed("foxy_jump_accept")) and is_on_floor():
 			#start some jump animation
 			$PlayerAnimSprite.play(jump_anim)
 			$JumpSFX.play()
