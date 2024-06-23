@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://deuew24su3ga3" path="res://Assets/NPCs/goose.tscn" id="3_57hya"]
 [ext_resource type="AudioStream" uid="uid://du0o2m7bow1do" path="res://Assets/SFX/Falls.wav" id="4_fwpt2"]
 
-[node name="RootNode" type="Node2D"]
+[node name="RootNode2" type="Node2D"]
 metadata/_edit_lock_ = true
 
 [node name="TerrainMap" type="TileMap" parent="."]
@@ -37,4 +37,3 @@ position = Vector2(397, -40)
 stream = ExtResource("4_fwpt2")
 autoplay = true
 attenuation = 0.176777
-bus = &"SFX"

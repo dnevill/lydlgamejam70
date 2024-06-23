@@ -44,7 +44,7 @@ _data = {
 "RESET": SubResource("Animation_xwt3m")
 }
 
-[node name="RootNode" type="Node2D"]
+[node name="RootNode2" type="Node2D"]
 script = ExtResource("1_rgl7g")
 metadata/_edit_lock_ = true
 
@@ -74,4 +74,3 @@ position = Vector2(397, -40)
 stream = ExtResource("5_dc3oc")
 autoplay = true
 attenuation = 0.176777
-bus = &"SFX"
