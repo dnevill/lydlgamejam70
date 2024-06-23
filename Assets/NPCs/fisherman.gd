@@ -2,9 +2,11 @@ extends Node2D
 @onready var dialogBox : DialogBox = $Dialog
 @onready var InterestingNode = $InterestingNode
 
+const FEESH_RIGID_BODY = preload("res://Assets/NPCs/feesh_rigid_body.tscn");
+
 var ready_to_interact = true;
 var waiting_to_interact = false;
-var disabledPlayer = null
+var disabledPlayer = null;
 
 #$enum DeerFates {DIDNT_MEET_YET, HELPED, SCARED, IGNORED}
 # Called when the node enters the scene tree for the first time.
@@ -48,6 +50,8 @@ func _on_dialog_option_selected(optionNumber):
 			InterestingNode.visible = false;
 			PlayerStateManager.FishermanFate = PlayerStateManager.FishermanFates.ASKED_FOR_FISH
 			ready_to_interact = false
+			var feesh = FEESH_RIGID_BODY.instantiate();
+			disabledPlayer.GetFeatherParent().add_child(feesh);
 		2:
 			#print("Knocked bucket")
 			InterestingNode.get_node("InterestingAnim").stop();
