@@ -158,6 +158,7 @@ stretch_mode = 0
 stream = ExtResource("14_bcrmg")
 volume_db = -8.0
 autoplay = true
+bus = &"Music"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0

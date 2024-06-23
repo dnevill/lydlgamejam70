@@ -12,6 +12,97 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8lxnj")
 
+[node name="jumpbutton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 540.0
+offset_top = 42.0
+offset_right = 762.0
+offset_bottom = 93.0
+text = "W"
+
+[node name="leftbutton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 540.0
+offset_top = 109.0
+offset_right = 762.0
+offset_bottom = 160.0
+text = "A"
+
+[node name="rightbutton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 540.0
+offset_top = 176.0
+offset_right = 762.0
+offset_bottom = 243.0
+text = "D"
+
+[node name="jlabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 372.0
+offset_top = 40.0
+offset_right = 492.0
+offset_bottom = 107.0
+theme_override_font_sizes/font_size = 48
+text = "Jump"
+
+[node name="llabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 372.0
+offset_top = 107.0
+offset_right = 492.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 48
+text = "Left"
+
+[node name="rlabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 372.0
+offset_top = 174.0
+offset_right = 492.0
+offset_bottom = 241.0
+theme_override_font_sizes/font_size = 48
+text = "Right"
+
+[node name="SFX label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 372.0
+offset_top = 282.0
+offset_right = 492.0
+offset_bottom = 349.0
+theme_override_font_sizes/font_size = 48
+text = "SFX"
+
+[node name="music label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 372.0
+offset_top = 362.0
+offset_right = 492.0
+offset_bottom = 429.0
+theme_override_font_sizes/font_size = 48
+text = "Music"
+
+[node name="sfxSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 282.0
+offset_right = 1132.0
+offset_bottom = 362.0
+max_value = 1.0
+step = 0.1
+value = 0.5
+tick_count = 11
+
+[node name="musicSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 362.0
+offset_right = 1132.0
+offset_bottom = 442.0
+max_value = 1.0
+step = 0.1
+value = 0.5
+tick_count = 11
+
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 28.0
@@ -20,4 +111,9 @@ offset_right = 252.0
 offset_bottom = 612.0
 texture_normal = ExtResource("2_b4nm1")
 
+[connection signal="pressed" from="jumpbutton" to="." method="_on_jumpbutton_pressed"]
+[connection signal="pressed" from="leftbutton" to="." method="_on_leftbutton_pressed"]
+[connection signal="pressed" from="rightbutton" to="." method="_on_rightbutton_pressed"]
+[connection signal="value_changed" from="sfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="musicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

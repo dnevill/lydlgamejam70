@@ -27,6 +27,8 @@ var FieldNPCFate = FieldNPCFates.DIDNT_MEET_YET
 var FarmerFate = FarmerFates.DIDNT_MEET_YET
 
 func _ready():
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),linear_to_db(0.5))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),linear_to_db(0.5))
 	GooseFate = GooseFates.DIDNT_MEET_YET
 	LumberjackAxeFate = LumberjackAxeFates.DIDNT_MEET_YET
 	FishermanFate = FishermanFates.DIDNT_MEET_YET
