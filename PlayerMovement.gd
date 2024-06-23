@@ -28,12 +28,12 @@ func _ready():
 			idle_anim = "idle_winged"
 			walk_anim = "walk_winged"
 			jump_anim = "jump_winged"
-			vertaccel = 750
+			vertaccel = 600
 		elif PlayerStateManager.GooseFate == PlayerStateManager.GooseFates.ATE:
 			idle_anim = "idle_griffox"
 			walk_anim = "walk_griffox"
 			jump_anim = "jump_griffox"
-			gravity_scale = 0.5
+			gravity_scale = 0.75
 		else:
 			idle_anim = "idle"
 			walk_anim = "walk"
