@@ -27,7 +27,22 @@ const W3_2forest = preload("res://Scenes/Scene3-2forest.tscn")
 
 const WCAVE = preload("res://Scenes/Cave.tscn");
 
+
+var bg_forest = preload("res://Assets/Backgrounds/forest_background_1.png")
+var fg_forest = preload("res://Assets/Backgrounds/forest_background_2.png")
+var bg_no_forest = preload("res://Assets/Backgrounds/no_forest_background_1.png")
+var fg_no_forest = preload("res://Assets/Backgrounds/no_forest_background_2.png")
+
 func _on_World_ready():
+	if PlayerStateManager.LumberjackAxeFate == PlayerStateManager.LumberjackAxeFates.GAVE:
+		print("LumberjackAxeFate: " + PlayerStateManager.LumberjackAxeFates.find_key(PlayerStateManager.LumberjackAxeFate) + " so we are swapping to the other parallax layers")
+		$ParallaxBackground/ParallaxLayer/Sprite2D.texture = bg_no_forest
+		$ParallaxBackground/ParallaxLayer2/Sprite2D.texture = fg_no_forest
+	else:
+		print("LumberjackAxeFate: " + PlayerStateManager.LumberjackAxeFates.find_key(PlayerStateManager.LumberjackAxeFate) + " so we are using the OG parallax layers")
+		$ParallaxBackground/ParallaxLayer/Sprite2D.texture = bg_forest
+		$ParallaxBackground/ParallaxLayer2/Sprite2D.texture = fg_forest
+
 	var newScene1 = W1_1
 	var newScene2 = W1_2
 	PlayerStateManager.printfates()

@@ -1,0 +1,119 @@
+[gd_scene load_steps=14 format=3 uid="uid://dwpoqtqw5m8r2"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_6q24q"]
+[ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="2_ayun7"]
+[ext_resource type="Texture2D" uid="uid://cvfray8h8jxoj" path="res://Assets/Backgrounds/forest_background_2.png" id="3_yoqc2"]
+[ext_resource type="Texture2D" uid="uid://dvt36vmgq2wvs" path="res://Assets/Backgrounds/no_forest_background_1.png" id="4_6x2fh"]
+[ext_resource type="Texture2D" uid="uid://c503hx8onc3pl" path="res://Assets/UI/reset.png" id="4_20721"]
+[ext_resource type="Texture2D" uid="uid://db3yf5lk0bhjy" path="res://Assets/Backgrounds/no_forest_background_2.png" id="5_0p3v0"]
+[ext_resource type="Texture2D" uid="uid://bfp281ogkkqq5" path="res://Assets/UI/start_tail_pressed.png" id="5_60nx7"]
+[ext_resource type="Texture2D" uid="uid://bh1adhps0rgik" path="res://Assets/UI/start_tail.png" id="5_oqtae"]
+[ext_resource type="Texture2D" uid="uid://dx8ry2b3r8dnl" path="res://Assets/UI/settings_button.png" id="6_co42b"]
+[ext_resource type="Texture2D" uid="uid://b0llfcatho4wp" path="res://Assets/UI/settings_button_pressed.png" id="7_a8vlp"]
+[ext_resource type="Texture2D" uid="uid://cphnxe06xgpw6" path="res://Assets/UI/credits.png" id="7_n21jl"]
+[ext_resource type="Texture2D" uid="uid://h7su803mqwci" path="res://Assets/UI/credits_pressed.png" id="9_u6ceg"]
+[ext_resource type="Texture2D" uid="uid://b3ewbub1xvonp" path="res://Assets/UI/reset_pressed.png" id="11_2o3rw"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6q24q")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(0, -275)
+transform = Transform2D(1, 0, 0, 1, 0, -275)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(42, 538)
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(2304, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, 200)
+texture = ExtResource("2_ayun7")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(72, 538)
+motion_scale = Vector2(0.08, 0.08)
+motion_mirroring = Vector2(2816, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(0, 200)
+texture = ExtResource("3_yoqc2")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+position = Vector2(42, 538)
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(2304, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(0, 200)
+texture = ExtResource("4_6x2fh")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+position = Vector2(72, 538)
+motion_scale = Vector2(0.08, 0.08)
+motion_mirroring = Vector2(2816, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(0, 200)
+texture = ExtResource("5_0p3v0")
+metadata/_edit_lock_ = true
+
+[node name="Start" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 378.0
+offset_top = 233.0
+offset_right = 784.0
+offset_bottom = 361.0
+texture_normal = ExtResource("5_oqtae")
+texture_pressed = ExtResource("5_60nx7")
+stretch_mode = 0
+
+[node name="Options" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 378.0
+offset_top = 371.0
+offset_right = 784.0
+offset_bottom = 499.0
+texture_normal = ExtResource("6_co42b")
+texture_pressed = ExtResource("7_a8vlp")
+stretch_mode = 0
+
+[node name="Credits" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 378.0
+offset_top = 509.0
+offset_right = 784.0
+offset_bottom = 637.0
+texture_normal = ExtResource("7_n21jl")
+texture_pressed = ExtResource("9_u6ceg")
+stretch_mode = 0
+
+[node name="Reset" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 909.0
+offset_top = 535.0
+offset_right = 1133.0
+offset_bottom = 619.0
+texture_normal = ExtResource("4_20721")
+texture_pressed = ExtResource("11_2o3rw")
+stretch_mode = 0
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]

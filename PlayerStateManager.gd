@@ -1,5 +1,8 @@
 extends Node2D
 
+
+var endScene = preload("res://Scenes/main_menu.tscn")
+
 enum GooseFates {DIDNT_MEET_YET, HELPED, ATE, IGNORED}
 enum LumberjackAxeFates {DIDNT_MEET_YET, GAVE, STOLE, LEFT}
 enum FishermanFates {DIDNT_MEET_YET, BUCKET_KNOCKED, FISHERMAN_KNOCKED, ASKED_FOR_FISH}
@@ -44,7 +47,7 @@ func EndCycle(loopCycleToStart = false):
 		resetfates()
 	elif PlayerStateManager.cycleNum > 3:
 		cycleNum = 3
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_packed(endScene)
 
 func printfates():
 	print("Cyclenumber: " + str(cycleNum))

@@ -20,15 +20,14 @@ shader_parameter/radius = 10.0
 script = ExtResource("1_m8qel")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-offset = Vector2(0, -275)
-transform = Transform2D(1, 0, 0, 1, 0, -275)
+scale = Vector2(0.75, 0.75)
+transform = Transform2D(0.75, 0, 0, 0.75, 0, 0)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.25, 0.25)
 motion_mirroring = Vector2(2304, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(0, 200)
 texture = ExtResource("2_i14i1")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -36,7 +35,6 @@ motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(2816, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(0, 200)
 texture = ExtResource("3_ucm6l")
 
 [node name="TerrainMap" type="TileMap" parent="."]
