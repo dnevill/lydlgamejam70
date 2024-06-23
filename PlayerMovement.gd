@@ -54,13 +54,13 @@ func GetFeatherParent():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if Input.is_action_just_pressed("ui_end"):
-		PlayerStateManager.printfates()
+	#if Input.is_action_just_pressed("ui_end"):
+	#	PlayerStateManager.printfates()
 	
-	if Input.is_action_just_pressed("ui_page_up"):
-		PlayerStateManager.incrementfates()
-	if Input.is_action_just_pressed("ui_page_down"):
-		PlayerStateManager.decrementfates()
+	#if Input.is_action_just_pressed("ui_page_up"):
+	#	PlayerStateManager.incrementfates()
+	#if Input.is_action_just_pressed("ui_page_down"):
+	#	PlayerStateManager.decrementfates()
 	freeze = in_dialog
 	if not in_dialog:
 		if Input.is_action_pressed("ui_left"):

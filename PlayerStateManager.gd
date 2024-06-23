@@ -37,9 +37,9 @@ func _ready():
 	FieldNPCFate = FieldNPCFates.DIDNT_MEET_YET
 	FarmerFate = FarmerFates.DIDNT_MEET_YET
 
-func _process(delta):
-	if Input.is_action_just_pressed("ui_home"):
-		EndCycle(true)
+#func _process(delta):
+#	if Input.is_action_just_pressed("ui_home"):
+#		EndCycle(true)
 
 
 func EndCycle(loopCycleToStart = false):
