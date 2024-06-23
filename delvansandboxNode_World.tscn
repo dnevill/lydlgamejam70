@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://rwcfqmnm42fu"]
+[gd_scene load_steps=20 format=3 uid="uid://rwcfqmnm42fu"]
 
 [ext_resource type="Script" path="res://Scripts/Node_World.gd" id="1_tohdx"]
 [ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="2_wcgcc"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cj4lw86a3m16s" path="res://Assets/NPCs/ox.tscn" id="13_2iuph"]
 [ext_resource type="PackedScene" uid="uid://drl7cmnaeca1e" path="res://Assets/NPCs/hunter.tscn" id="14_28fux"]
 [ext_resource type="PackedScene" uid="uid://jruyniaus0ya" path="res://Assets/NPCs/farmer.tscn" id="15_ffuyk"]
+[ext_resource type="PackedScene" uid="uid://vbtxtd80qp3i" path="res://Scenes/fade_out_in.tscn" id="16_7vxmp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sga7q"]
 shader = ExtResource("7_wet55")
@@ -107,5 +108,7 @@ position = Vector2(1129, -216)
 
 [node name="Farmer" parent="Node2D" instance=ExtResource("15_ffuyk")]
 position = Vector2(1006, -213)
+
+[node name="FadeOutIn" parent="." instance=ExtResource("16_7vxmp")]
 
 [connection signal="ready" from="." to="." method="_on_World_ready"]
