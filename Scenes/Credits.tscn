@@ -140,14 +140,13 @@ GreenCastleB
 User Interface
 extremelymild
 
-Audio Design
-signal
-
 Background Art
 Ethan Yanyo
 
 Playtesting
 MeekRhino
+Lydlbutton
+Lord Wilmore
 
 
 Thanks for playing <3"
@@ -186,7 +185,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("9_eitjv")
 
 [node name="OxSprite" type="Sprite2D" parent="StageNode"]
-position = Vector2(239, 1103)
+position = Vector2(239, 1050)
 scale = Vector2(2, 2)
 texture = ExtResource("10_l2h5a")
 
