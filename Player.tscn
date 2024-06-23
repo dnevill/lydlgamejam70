@@ -222,12 +222,15 @@ one_shot = true
 
 [node name="Cycle1Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_kbex8")
+volume_db = -1.953
 
 [node name="Cycle2Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_l5hlq")
+volume_db = -7.324
 
 [node name="Cycle3Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_wkcew")
+volume_db = -1.465
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="ready" from="PlayerAnimSprite" to="." method="_on_player_anim_sprite_ready"]
