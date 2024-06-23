@@ -10,6 +10,11 @@ func _ready():
 		$ParallaxBackground/ParallaxLayer2.visible = false
 		$ParallaxBackground/ParallaxLayer3.visible = true
 		$ParallaxBackground/ParallaxLayer4.visible = true
+	else:
+		$ParallaxBackground/ParallaxLayer.visible = true
+		$ParallaxBackground/ParallaxLayer2.visible = true
+		$ParallaxBackground/ParallaxLayer3.visible = false
+		$ParallaxBackground/ParallaxLayer4.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

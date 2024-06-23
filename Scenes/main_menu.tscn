@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwpoqtqw5m8r2"]
+[gd_scene load_steps=15 format=3 uid="uid://dwpoqtqw5m8r2"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_6q24q"]
 [ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="2_ayun7"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cphnxe06xgpw6" path="res://Assets/UI/credits.png" id="7_n21jl"]
 [ext_resource type="Texture2D" uid="uid://h7su803mqwci" path="res://Assets/UI/credits_pressed.png" id="9_u6ceg"]
 [ext_resource type="Texture2D" uid="uid://b3ewbub1xvonp" path="res://Assets/UI/reset_pressed.png" id="11_2o3rw"]
+[ext_resource type="AudioStream" uid="uid://bscmxr5vy1n4m" path="res://Assets/Music/Forest_Ambience.mp3" id="14_bcrmg"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -112,6 +113,11 @@ offset_bottom = 619.0
 texture_normal = ExtResource("4_20721")
 texture_pressed = ExtResource("11_2o3rw")
 stretch_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_bcrmg")
+volume_db = -8.0
+autoplay = true
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
