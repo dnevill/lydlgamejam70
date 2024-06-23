@@ -48,7 +48,7 @@ func EndCycle(loopCycleToStart = false):
 	PlayerStateManager.cycleNum += 1
 	if PlayerStateManager.cycleNum > 3 and loopCycleToStart:
 		resetfates()
-	elif PlayerStateManager.cycleNum > 3:
+	elif PlayerStateManager.cycleNum > 4:
 		cycleNum = 3
 	get_tree().change_scene_to_packed(endScene)
 

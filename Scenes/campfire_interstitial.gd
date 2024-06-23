@@ -5,7 +5,8 @@ var main_menu = preload("res://Scenes/main_menu.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if PlayerStateManager.cycleNum > 2:
+	if PlayerStateManager.cycleNum > 3:
+		PlayerStateManager.cycleNum = 3
 		$campfire3.visible = true
 		$campfire2.visible = false
 		$Label.visible = false
