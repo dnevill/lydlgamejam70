@@ -8,8 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://dadfempqrk6r8" path="res://Assets/SFX/ScratchUp.ogg" id="5_sny51"]
 [ext_resource type="Texture2D" uid="uid://ddxc01nnfkhgv" path="res://Assets/Sprites/winged_fox_walk.png" id="5_ue7f5"]
 [ext_resource type="Texture2D" uid="uid://o32774w3hrri" path="res://Assets/Sprites/jumping_winged_fox.png" id="6_iqmve"]
-[ext_resource type="Texture2D" uid="uid://dsdxfp23xxefg" path="res://Assets/Sprites/griffox_jump.png" id="6_k0ghd"]
 [ext_resource type="AudioStream" uid="uid://cc2hcitpr67pq" path="res://Assets/SFX/ScratchDown.ogg" id="6_mur7g"]
+[ext_resource type="Texture2D" uid="uid://dsdxfp23xxefg" path="res://Assets/Sprites/griffox_jump.png" id="6_njf3a"]
 [ext_resource type="AudioStream" uid="uid://cg0co0lem0v26" path="res://Assets/SFX/ScratchClunk.ogg" id="7_wiifw"]
 [ext_resource type="AudioStream" uid="uid://c1ylaojf11fe4" path="res://Assets/Music/Komiku_-_13_-_Bleu.mp3" id="11_kbex8"]
 [ext_resource type="AudioStream" uid="uid://3o55ly27aekx" path="res://Assets/Music/TownTheme.mp3" id="11_l5hlq"]
@@ -111,7 +111,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_k0ghd")
+"texture": ExtResource("6_njf3a")
 }],
 "loop": true,
 "name": &"jump_griffox",
