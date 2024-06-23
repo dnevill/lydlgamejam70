@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwpoqtqw5m8r2"]
+[gd_scene load_steps=16 format=3 uid="uid://b25f2usv5afye"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_6q24q"]
 [ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="2_ayun7"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://h7su803mqwci" path="res://Assets/UI/credits_pressed.png" id="9_u6ceg"]
 [ext_resource type="Texture2D" uid="uid://b3ewbub1xvonp" path="res://Assets/UI/reset_pressed.png" id="11_2o3rw"]
 [ext_resource type="AudioStream" uid="uid://bscmxr5vy1n4m" path="res://Assets/Music/Forest_Ambience.mp3" id="14_bcrmg"]
+[ext_resource type="Texture2D" uid="uid://d2s55mku7gfcx" path="res://Assets/UI/Forest Foxlore.png" id="15_xv3ti"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -118,6 +119,11 @@ stretch_mode = 0
 stream = ExtResource("14_bcrmg")
 volume_db = -8.0
 autoplay = true
+
+[node name="ForestFoxlore" type="Sprite2D" parent="."]
+position = Vector2(569.75, 119)
+scale = Vector2(1.79187, 1.73913)
+texture = ExtResource("15_xv3ti")
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
