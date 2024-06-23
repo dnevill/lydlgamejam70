@@ -15,6 +15,7 @@ func _ready():
 		$ParallaxBackground/ParallaxLayer2.visible = true
 		$ParallaxBackground/ParallaxLayer3.visible = false
 		$ParallaxBackground/ParallaxLayer4.visible = false
+	$Start.grab_focus()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

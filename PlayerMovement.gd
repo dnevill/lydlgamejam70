@@ -79,7 +79,7 @@ func _physics_process(delta):
 		#else:
 			#No left/right input, so we should start damping our movement back down
 			#var movementVector = player.
-		if Input.is_action_just_pressed("ui_up") and is_on_floor():
+		if (Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_accept")) and is_on_floor():
 			#start some jump animation
 			$PlayerAnimSprite.play(jump_anim)
 			$JumpSFX.play()
