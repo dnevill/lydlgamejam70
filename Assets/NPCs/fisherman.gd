@@ -1,5 +1,6 @@
 extends Node2D
 @onready var dialogBox : DialogBox = $Dialog
+@onready var InterestingNode = $InterestingNode
 
 var ready_to_interact = true;
 var waiting_to_interact = false;
@@ -8,6 +9,7 @@ var disabledPlayer = null
 #$enum DeerFates {DIDNT_MEET_YET, HELPED, SCARED, IGNORED}
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	InterestingNode.get_node("InterestingAnim").play("ExclamDance");
 	dialogBox.SetPhoto($Sprite2D.texture)
 	#Probably need some code here to position the dialog box on screen at a good spot.
 	pass # Replace with function body.
@@ -35,19 +37,21 @@ func _on_area_2d_body_exited(body):
 		print("Hey the player stopped touchin' me")
 		waiting_to_interact = false
 		ready_to_interact = true
-
-
-
+		InterestingNode.visible = true;
 
 func _on_dialog_option_selected(optionNumber):
 	disabledPlayer.in_dialog = false
 	match optionNumber:
 		1:
-			print("Asked for a feesh")
+			#print("Asked for a feesh")
+			InterestingNode.get_node("InterestingAnim").stop();
+			InterestingNode.visible = false;
 			PlayerStateManager.FishermanFate = PlayerStateManager.FishermanFates.ASKED_FOR_FISH
 			ready_to_interact = false
 		2:
-			print("Knocked bucket")
+			#print("Knocked bucket")
+			InterestingNode.get_node("InterestingAnim").stop();
+			InterestingNode.visible = false;
 			PlayerStateManager.FishermanFate = PlayerStateManager.FishermanFates.BUCKET_KNOCKED
 			$Sprite2D/Sprite2DFish.z_index += 3
 			var tween = get_tree().create_tween()
@@ -57,7 +61,9 @@ func _on_dialog_option_selected(optionNumber):
 			#tweens to send the bucket into the water
 			ready_to_interact = false
 		3:
-			print("Knocked fisherman")
+			#print("Knocked fisherman")
+			InterestingNode.get_node("InterestingAnim").stop();
+			InterestingNode.visible = false;
 			PlayerStateManager.FishermanFate = PlayerStateManager.FishermanFates.FISHERMAN_KNOCKED
 			var tween = get_tree().create_tween()
 			tween.tween_property($Sprite2D, "position", Vector2.UP * 75 + Vector2.RIGHT * 100, 0.5).as_relative().from_current()
@@ -75,7 +81,6 @@ func _on_timer_timeout():
 	if ready_to_interact:
 		$IdleSound.play()
 		$AnimationPlayer.play("shake quarter sec")
-
 
 func _on_idle_sound_finished():
 	$IdleSound/Timer.start()

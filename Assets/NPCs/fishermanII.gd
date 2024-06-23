@@ -1,10 +1,13 @@
 extends Node2D
 @onready var dialogBox : DialogBox = $Dialog
+@onready var InterestingNode = $InterestingNode
 
 var ready_to_interact = true;
 var waiting_to_interact = false;
 var disabledPlayer = null
 
+func _ready():
+	InterestingNode.get_node("InterestingAnim").play("ExclamDance");
 
 func _on_area_2d_body_entered(body):
 	if (PlayerStateManager.FishermanFate == PlayerStateManager.FishermanFates.BUCKET_KNOCKED):
@@ -30,15 +33,15 @@ func _on_area_2d_body_exited(body):
 		print("Hey the player stopped touchin' me")
 		waiting_to_interact = false
 		ready_to_interact = true
-
-
-
+		InterestingNode.visible = true;
 
 func _on_dialog_option_selected(optionNumber):
 	disabledPlayer.in_dialog = false
 	match optionNumber:
 		1:
-			print("*nods*")
+			#print("*nods*")
+			InterestingNode.get_node("InterestingAnim").stop();
+			InterestingNode.visible = false;
 			PlayerStateManager.FishermanIIFate = PlayerStateManager.FishermanIIFates.SOMETHING
 			if (PlayerStateManager.FishermanFate == PlayerStateManager.FishermanFates.BUCKET_KNOCKED):
 				var tween = get_tree().create_tween()
@@ -69,7 +72,6 @@ func _on_timer_timeout():
 	if ready_to_interact:
 		$IdleSound.play()
 		$AnimationPlayer.play("shake quarter sec")
-
 
 func _on_idle_sound_finished():
 	$IdleSound/Timer.start()
