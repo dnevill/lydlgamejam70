@@ -22,7 +22,8 @@ var jump_anim = "jump"
 
 
 func _ready():
-	if PlayerStateManager.cycleNum > 1:
+	var cycle = PlayerStateManager.cycleNum
+	if cycle > 1:
 		if PlayerStateManager.GooseFate == PlayerStateManager.GooseFates.HELPED:
 			idle_anim = "idle_winged"
 			walk_anim = "walk_winged"
@@ -37,6 +38,14 @@ func _ready():
 			idle_anim = "idle"
 			walk_anim = "walk"
 			jump_anim = "jump"
+	
+	if cycle == 1:
+		$Cycle1Music.play()
+	elif cycle == 2:
+		$Cycle2Music.play()
+	else:
+		$Cycle3Music.play()
+	
 	$PlayerAnimSprite.play(idle_anim)
 
 

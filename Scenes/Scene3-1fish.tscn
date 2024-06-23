@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cktt843dhuklq"]
+[gd_scene load_steps=7 format=3 uid="uid://cktt843dhuklq"]
 
 [ext_resource type="TileSet" uid="uid://bh13703t5d8jy" path="res://Assets/Tiles/tileset.tres" id="1_pyc3v"]
 [ext_resource type="PackedScene" uid="uid://heagyyt2yy4u" path="res://Assets/NPCs/fish_path_follow_2d.tscn" id="2_vcfn6"]
 [ext_resource type="PackedScene" uid="uid://tjxq87wps27u" path="res://Assets/NPCs/fishermanII.tscn" id="3_3l2kh"]
+[ext_resource type="AudioStream" uid="uid://du0o2m7bow1do" path="res://Assets/SFX/Falls.wav" id="4_u4qet"]
 
 [sub_resource type="Curve2D" id="Curve2D_3v1wc"]
 _data = {
@@ -77,3 +78,9 @@ rotates = false
 
 [node name="FishermanII" parent="." instance=ExtResource("3_3l2kh")]
 position = Vector2(401, -287)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(397, -40)
+stream = ExtResource("4_u4qet")
+autoplay = true
+attenuation = 0.176777

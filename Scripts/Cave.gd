@@ -1,5 +1,4 @@
 extends Node2D
-signal has_been_entered
 
 @onready var NudgeNode = $NudgeNode;
 
@@ -14,12 +13,13 @@ func _ready():
 
 func _process(_delta):
 	if(PlayerInDoor):
-		if(InDoorResting > 0):
-			if(InDoorResting == DOOR_RESTFRAMES):
-				NudgeNode.visible = false;
-			InDoorResting -= 1;
-			if(InDoorResting == 0):
-				has_been_entered.emit();
+		PlayerStateManager.EndCycle()
+		#if(InDoorResting > 0):
+		#	if(InDoorResting <= DOOR_RESTFRAMES):
+		#		NudgeNode.visible = false;
+		#	InDoorResting -= 1;
+		#if(InDoorResting <= 0):
+		#	PlayerStateManager.EndCycle()
 
 func _on_warning_area_body_entered(body):
 	if body.name == "PlayerRigidBody":
@@ -42,7 +42,7 @@ func _on_doorway_area_body_entered(body):
 		InDoorResting = DOOR_RESTFRAMES;
 	pass;
 
-
+#hopefully this doesn't happen but good to handle it just in case
 func _on_doorway_area_body_exited(body):
 	if body.name == "PlayerRigidBody":
 		PlayerInDoor = false;

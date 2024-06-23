@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://khg6c7a2fvde"]
+[gd_scene load_steps=32 format=3 uid="uid://khg6c7a2fvde"]
 
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_3k6b3"]
 [ext_resource type="Texture2D" uid="uid://q6g0lk67sjdr" path="res://Assets/Sprites/fox_idle.png" id="2_6kosu"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://o32774w3hrri" path="res://Assets/Sprites/jumping_winged_fox.png" id="6_iqmve"]
 [ext_resource type="AudioStream" uid="uid://cc2hcitpr67pq" path="res://Assets/SFX/ScratchDown.ogg" id="6_mur7g"]
 [ext_resource type="AudioStream" uid="uid://cg0co0lem0v26" path="res://Assets/SFX/ScratchClunk.ogg" id="7_wiifw"]
+[ext_resource type="AudioStream" uid="uid://c1ylaojf11fe4" path="res://Assets/Music/Komiku_-_13_-_Bleu.mp3" id="11_kbex8"]
+[ext_resource type="AudioStream" uid="uid://3o55ly27aekx" path="res://Assets/Music/TownTheme.mp3" id="11_l5hlq"]
+[ext_resource type="AudioStream" uid="uid://ba2mdompcon4n" path="res://Assets/Music/Wooden Inn.mp3" id="13_wkcew"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0rx2x"]
 friction = 0.2
@@ -216,6 +219,15 @@ one_shot = true
 
 [node name="IdleTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Cycle1Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_kbex8")
+
+[node name="Cycle2Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_l5hlq")
+
+[node name="Cycle3Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_wkcew")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="ready" from="PlayerAnimSprite" to="." method="_on_player_anim_sprite_ready"]

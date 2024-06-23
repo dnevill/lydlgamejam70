@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpg4amfku11si"]
+[gd_scene load_steps=9 format=3 uid="uid://bpg4amfku11si"]
 
 [ext_resource type="TileSet" uid="uid://bh13703t5d8jy" path="res://Assets/Tiles/tileset.tres" id="1_pyc3v"]
 [ext_resource type="Script" path="res://Scenes/Scene2-1pond.gd" id="1_rgl7g"]
 [ext_resource type="PackedScene" uid="uid://cwe2fqmxqhng" path="res://Assets/NPCs/fisherman.tscn" id="2_vw5lh"]
 [ext_resource type="PackedScene" uid="uid://d64mxwdjgin4" path="res://Assets/NPCs/school_of_fish.tscn" id="4_cnxia"]
+[ext_resource type="AudioStream" uid="uid://du0o2m7bow1do" path="res://Assets/SFX/Falls.wav" id="5_dc3oc"]
 
 [sub_resource type="Animation" id="Animation_7laxd"]
 resource_name = "Jiggle_Fish_School"
@@ -67,3 +68,9 @@ position = Vector2(471, -61)
 libraries = {
 "": SubResource("AnimationLibrary_a66tn")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(397, -40)
+stream = ExtResource("5_dc3oc")
+autoplay = true
+attenuation = 0.176777
