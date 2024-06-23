@@ -20,7 +20,7 @@ func _process(_delta):
 
 
 func _on_area_2d_body_entered(body):
-	dialogBox.SetDialogText("You come acroos an Ox plowing a field where the forest once stood. They say to you 'Plowing this field is boring! I'm looking for more of a challenge. If you free me I will LITERALLY jump over the moon. You'll see!'")
+	dialogBox.SetDialogText("You come across an Ox plowing a field where the forest once stood. They say to you 'Plowing this field is boring! I'm looking for more of a challenge. If you free me I will LITERALLY jump over the moon. You'll see!'")
 	dialogBox.SetOption1Text("Free the ox")
 	dialogBox.SetOption2Text("Leave it yoked")
 	#dialogBox.SetOption3Text("Ignore them")
