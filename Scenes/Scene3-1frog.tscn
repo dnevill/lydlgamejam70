@@ -22,6 +22,7 @@ position = Vector2(577, -288)
 stream = ExtResource("2_ipdim")
 autoplay = true
 attenuation = 0.176777
+bus = &"SFX"
 
 [node name="Forg" parent="." instance=ExtResource("2_7bj35")]
 position = Vector2(180, -248)

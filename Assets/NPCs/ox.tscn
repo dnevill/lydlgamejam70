@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cj4lw86a3m16s"]
+[gd_scene load_steps=11 format=3 uid="uid://cj4lw86a3m16s"]
 
 [ext_resource type="Script" path="res://Assets/NPCs/ox.gd" id="1_tsc0a"]
 [ext_resource type="Texture2D" uid="uid://4dr0niiuicyl" path="res://Assets/Sprites/ox.png" id="2_7sg37"]
@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://igk8n2a22fp2" path="res://Assets/SFX/oxGrowl 1.wav" id="4_xaidu"]
 [ext_resource type="AudioStream" uid="uid://ct2vvv7pokvst" path="res://Assets/SFX/oxVoice.wav" id="5_2vbtq"]
 [ext_resource type="AudioStream" uid="uid://npkps8ia1pyn" path="res://Assets/SFX/ox combo Take Off.ogg" id="6_lg1uj"]
-[ext_resource type="Texture2D" uid="uid://c4fqhrsyjtq54" path="res://Assets/Icons/interesting.png" id="7_kp0fj"]
 
 [sub_resource type="Animation" id="Animation_qp465"]
 length = 0.001
@@ -73,40 +72,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5orx"]
 size = Vector2(36.5, 57.5)
 
-[sub_resource type="Animation" id="Animation_7q8xx"]
-resource_name = "ExclamDance"
-length = 5.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InterestingIcon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1.5, 2, 2.5, 3, 3.5, 4),
-"transitions": PackedFloat32Array(1, 0.241484, 0.435275, 1, 0.435275, 2.07053),
-"update": 0,
-"values": [Vector2(0, -32), Vector2(0, -40), Vector2(0, -32), Vector2(0, -32), Vector2(0, -40), Vector2(0, -32)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InterestingIcon:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [true, false, true, false, true, false, true, false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_oy0g4"]
-_data = {
-"ExclamDance": SubResource("Animation_7q8xx")
-}
-
 [node name="Ox" type="Node2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_tsc0a")
@@ -132,10 +97,12 @@ visible = false
 
 [node name="DialogSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_xaidu")
+bus = &"SFX"
 
 [node name="IdleSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_2vbtq")
 max_distance = 1500.0
+bus = &"SFX"
 
 [node name="Timer" type="Timer" parent="IdleSound"]
 wait_time = 3.0
@@ -143,19 +110,7 @@ autostart = true
 
 [node name="Flight noise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_lg1uj")
-
-[node name="InterestingNode" type="Node2D" parent="."]
-position = Vector2(0, -4)
-
-[node name="InterestingIcon" type="Sprite2D" parent="InterestingNode"]
-position = Vector2(0, -32)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("7_kp0fj")
-
-[node name="InterestingAnim" type="AnimationPlayer" parent="InterestingNode"]
-libraries = {
-"": SubResource("AnimationLibrary_oy0g4")
-}
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

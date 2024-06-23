@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6uh01pqb4qvv"]
+[gd_scene load_steps=10 format=3 uid="uid://b6uh01pqb4qvv"]
 
 [ext_resource type="Script" path="res://Assets/NPCs/deer.gd" id="1_lc2cd"]
 [ext_resource type="Texture2D" uid="uid://gh3itaxw56hq" path="res://Assets/Sprites/deer_idle.png" id="2_sq1wd"]
 [ext_resource type="PackedScene" uid="uid://b780hw38aude7" path="res://DialogBox.tscn" id="3_3i84o"]
 [ext_resource type="AudioStream" uid="uid://d4mhwf6fot7p0" path="res://Assets/SFX/DeerVoice2.wav" id="4_1erdh"]
 [ext_resource type="AudioStream" uid="uid://c48ul221dvg7m" path="res://Assets/SFX/DeerVoice1.wav" id="5_1b3fl"]
-[ext_resource type="Texture2D" uid="uid://c4fqhrsyjtq54" path="res://Assets/Icons/interesting.png" id="6_kbp13"]
 
 [sub_resource type="Animation" id="Animation_qp465"]
 length = 0.001
@@ -73,40 +72,6 @@ _data = {
 radius = 18.4761
 height = 57.892
 
-[sub_resource type="Animation" id="Animation_7q8xx"]
-resource_name = "ExclamDance"
-length = 5.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InterestingIcon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1.5, 2, 2.5, 3, 3.5, 4),
-"transitions": PackedFloat32Array(1, 0.241484, 0.435275, 1, 0.435275, 2.07053),
-"update": 0,
-"values": [Vector2(0, -32), Vector2(0, -40), Vector2(0, -32), Vector2(0, -32), Vector2(0, -40), Vector2(0, -32)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InterestingIcon:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [true, false, true, false, true, false, true, false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_oy0g4"]
-_data = {
-"ExclamDance": SubResource("Animation_7q8xx")
-}
-
 [node name="Deer" type="Node2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_lc2cd")
@@ -132,27 +97,16 @@ visible = false
 
 [node name="DialogSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_1erdh")
+bus = &"SFX"
 
 [node name="IdleSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_1b3fl")
 max_distance = 1500.0
+bus = &"SFX"
 
 [node name="Timer" type="Timer" parent="IdleSound"]
 wait_time = 3.0
 autostart = true
-
-[node name="InterestingNode" type="Node2D" parent="."]
-position = Vector2(0, -8)
-
-[node name="InterestingIcon" type="Sprite2D" parent="InterestingNode"]
-position = Vector2(0, -32)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_kbp13")
-
-[node name="InterestingAnim" type="AnimationPlayer" parent="InterestingNode"]
-libraries = {
-"": SubResource("AnimationLibrary_oy0g4")
-}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

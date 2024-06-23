@@ -81,8 +81,10 @@ polygon = PackedVector2Array(-13, 14, 13, 14, 5, -16, -7, -16)
 
 [node name="Frog1SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_cppfi")
+bus = &"SFX"
 
 [node name="Frog2SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_uoedl")
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

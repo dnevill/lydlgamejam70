@@ -37,3 +37,4 @@ position = Vector2(397, -40)
 stream = ExtResource("4_fwpt2")
 autoplay = true
 attenuation = 0.176777
+bus = &"SFX"

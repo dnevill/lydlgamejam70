@@ -204,14 +204,17 @@ shape = SubResource("CapsuleShape2D_3tiky")
 [node name="JumpSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_sny51")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="WalkSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_mur7g")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="BumpSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_wiifw")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="WalkNoiseTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -223,14 +226,17 @@ one_shot = true
 [node name="Cycle1Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_kbex8")
 volume_db = -2.0
+bus = &"Music"
 
 [node name="Cycle2Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_l5hlq")
 volume_db = -7.0
+bus = &"Music"
 
 [node name="Cycle3Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_wkcew")
 volume_db = -2.0
+bus = &"Music"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="ready" from="PlayerAnimSprite" to="." method="_on_player_anim_sprite_ready"]
