@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dwpoqtqw5m8r2"]
+[gd_scene load_steps=22 format=3 uid="uid://dwpoqtqw5m8r2"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_6q24q"]
 [ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="2_ayun7"]
@@ -18,9 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://25idwqgoaf7l" path="res://Assets/UI/settings_button_focused.png" id="11_e1e0y"]
 [ext_resource type="Texture2D" uid="uid://141cxrrr70am" path="res://Assets/UI/credits_focused.png" id="14_2jaan"]
 [ext_resource type="AudioStream" uid="uid://bscmxr5vy1n4m" path="res://Assets/Music/Forest_Ambience.mp3" id="14_bcrmg"]
-[ext_resource type="Texture2D" uid="uid://d2s55mku7gfcx" path="res://Assets/UI/Forest Foxlore.png" id="15_xv3ti"]
 [ext_resource type="Texture2D" uid="uid://c863hh2coen1q" path="res://Assets/UI/reset_focused.png" id="17_lgpt4"]
 [ext_resource type="Texture2D" uid="uid://c8tv8r5ibmrlx" path="res://Assets/UI/reset_hover.png" id="18_irbg0"]
+[ext_resource type="Texture2D" uid="uid://d2s55mku7gfcx" path="res://Assets/UI/Forest Foxlore.png" id="21_ulidx"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -158,10 +158,13 @@ stream = ExtResource("14_bcrmg")
 volume_db = -8.0
 autoplay = true
 
-[node name="ForestFoxlore" type="Sprite2D" parent="."]
-position = Vector2(569.75, 119)
-scale = Vector2(1.79187, 1.73913)
-texture = ExtResource("15_xv3ti")
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 22.0
+offset_right = 1051.0
+offset_bottom = 225.0
+texture = ExtResource("21_ulidx")
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
