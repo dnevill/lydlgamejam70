@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dadfempqrk6r8" path="res://Assets/SFX/ScratchUp.ogg" id="5_sny51"]
 [ext_resource type="Texture2D" uid="uid://ddxc01nnfkhgv" path="res://Assets/Sprites/winged_fox_walk.png" id="5_ue7f5"]
 [ext_resource type="Texture2D" uid="uid://o32774w3hrri" path="res://Assets/Sprites/jumping_winged_fox.png" id="6_iqmve"]
+[ext_resource type="Texture2D" uid="uid://dsdxfp23xxefg" path="res://Assets/Sprites/griffox_jump.png" id="6_k0ghd"]
 [ext_resource type="AudioStream" uid="uid://cc2hcitpr67pq" path="res://Assets/SFX/ScratchDown.ogg" id="6_mur7g"]
 [ext_resource type="AudioStream" uid="uid://cg0co0lem0v26" path="res://Assets/SFX/ScratchClunk.ogg" id="7_wiifw"]
 [ext_resource type="AudioStream" uid="uid://c1ylaojf11fe4" path="res://Assets/Music/Komiku_-_13_-_Bleu.mp3" id="11_kbex8"]
@@ -25,10 +26,6 @@ region = Rect2(0, 0, 48, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_58o7h"]
 atlas = ExtResource("5_ue7f5")
 region = Rect2(0, 0, 48, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sgkek"]
-atlas = ExtResource("4_ijcha")
-region = Rect2(48, 0, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_huvuf"]
 atlas = ExtResource("3_86jrc")
@@ -114,7 +111,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sgkek")
+"texture": ExtResource("6_k0ghd")
 }],
 "loop": true,
 "name": &"jump_griffox",
@@ -195,7 +192,7 @@ script = ExtResource("1_3k6b3")
 
 [node name="PlayerAnimSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fbgat")
-animation = &"jump_winged"
+animation = &"jump_griffox"
 autoplay = "walk"
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]

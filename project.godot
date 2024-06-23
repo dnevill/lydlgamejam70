@@ -27,6 +27,10 @@ window/stretch/mode="viewport"
 
 movie_writer/movie_file="C:/Users/dnevi/Dropbox/My PC (DESKTOP-0CGNTLR)/Documents/recording.avi"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_left={
