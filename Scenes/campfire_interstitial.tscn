@@ -32,18 +32,34 @@ texture = ExtResource("3_bhmhv")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(563, 480)
 amount = 2
-lifetime = 0.25
 explosiveness = 0.23
 randomness = 0.6
 emission_shape = 1
 emission_sphere_radius = 40.7
 direction = Vector2(0, -1)
 spread = 90.0
-initial_velocity_min = 200.0
-initial_velocity_max = 400.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
 scale_amount_min = 2.0
 scale_amount_max = 2.0
 color = Color(0.85098, 0.341176, 0.388235, 1)
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(563, 458)
+amount = 2
+explosiveness = 0.23
+randomness = 0.6
+emission_shape = 1
+emission_sphere_radius = 40.7
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color = Color(0.933333, 0.764706, 0.603922, 1)
 
 [node name="campfire2" type="TextureRect" parent="."]
 z_index = 1
@@ -54,6 +70,7 @@ texture = ExtResource("2_0lvx8")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6ddxr")
+volume_db = -9.699
 autoplay = true
 bus = &"Music"
 

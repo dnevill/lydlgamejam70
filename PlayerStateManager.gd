@@ -15,6 +15,9 @@ enum FieldNPCFates {DIDNT_MEET_YET, SOMETHING, SOMETHINGELESE, IGNORED}
 enum FarmerFates {DIDNT_MEET_YET, SNEAKED_IN, DID_SOMETHING_CUTE, IGNORED}
 
 var cycleNum = 1
+const MAXCYCLE = 3
+
+var enable_curvature = true
 
 var GooseFate = GooseFates.DIDNT_MEET_YET
 var LumberjackAxeFate = LumberjackAxeFates.DIDNT_MEET_YET
@@ -44,12 +47,15 @@ func _ready():
 #		EndCycle(true)
 
 
-func EndCycle(loopCycleToStart = false):
-	PlayerStateManager.cycleNum += 1
-	if PlayerStateManager.cycleNum > 3 and loopCycleToStart:
+func EndCycle(loopCycleToStart = false, cycleCountChange = 1):
+	PlayerStateManager.cycleNum += cycleCountChange
+	if PlayerStateManager.cycleNum > MAXCYCLE and loopCycleToStart:
 		resetfates()
-	elif PlayerStateManager.cycleNum > 4:
-		cycleNum = 3
+	elif PlayerStateManager.cycleNum > MAXCYCLE+1:
+		#The way this is structured, the end scene triggers after this has all run, SO
+		#for now there's an extra maxcycle+1 cycle state that tells the end screen that you've finished all three cycles
+		#so it can show you the thanks for playing variant
+		cycleNum = MAXCYCLE
 	get_tree().change_scene_to_packed(endScene)
 
 func printfates():
@@ -76,31 +82,3 @@ func resetfates():
 	HunterFate = HunterFates.DIDNT_MEET_YET
 	FieldNPCFate = FieldNPCFates.DIDNT_MEET_YET
 	FarmerFate = FarmerFates.DIDNT_MEET_YET
-
-func incrementfates():
-	adjustfatesbyx(1)
-	printfates()
-	
-func decrementfates():
-	adjustfatesbyx(-1)
-	printfates()
-	
-func adjustfatesbyx(x : int):
-	if GooseFate + x > -1 and GooseFate + x < 4:
-		GooseFate += x
-	if LumberjackAxeFate + x > -1 and LumberjackAxeFate + x < 4:
-		LumberjackAxeFate  += x
-	if FishermanFate + x > -1 and FishermanFate + x < 4:
-		FishermanFate += x
-	if DeerFate + x > -1 and DeerFate + x < 4:
-		DeerFate += x
-	if OxFate + x > -1 and OxFate + x < 4:
-		OxFate += x
-	if FishermanIIFate + x > -1 and FishermanIIFate + x < 4:
-		FishermanIIFate += x
-	if HunterFate + x > -1 and HunterFate + x < 4:
-		HunterFate += x
-	if FieldNPCFate + x > -1 and FieldNPCFate + x < 4:
-		FieldNPCFate += x
-	if FarmerFate + x > -1 and FarmerFate + x < 4:
-		FarmerFate += x

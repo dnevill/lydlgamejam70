@@ -33,9 +33,11 @@ var fg_forest = preload("res://Assets/Backgrounds/forest_background_2.png")
 var bg_no_forest = preload("res://Assets/Backgrounds/no_forest_background_1.png")
 var fg_no_forest = preload("res://Assets/Backgrounds/no_forest_background_2.png")
 
-@onready var fader = $FadeOutIn
-
+@onready var fader = $Camera2D/FadeOutIn
+@onready var curve_effect = $Camera2D/WorldCurveEffect
 func _on_World_ready():
+	fader.visible = true
+	curve_effect.visible = PlayerStateManager.enable_curvature
 	if PlayerStateManager.LumberjackAxeFate == PlayerStateManager.LumberjackAxeFates.GAVE:
 		if (PlayerStateManager.DEBUG):
 			print("LumberjackAxeFate: " + PlayerStateManager.LumberjackAxeFates.find_key(PlayerStateManager.LumberjackAxeFate) + " so we are swapping to the other parallax layers")

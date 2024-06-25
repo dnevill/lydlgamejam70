@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://khg6c7a2fvde"]
+[gd_scene load_steps=35 format=3 uid="uid://khg6c7a2fvde"]
 
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_3k6b3"]
 [ext_resource type="Texture2D" uid="uid://q6g0lk67sjdr" path="res://Assets/Sprites/fox_idle.png" id="2_6kosu"]
@@ -181,6 +181,67 @@ animations = [{
 radius = 12.5
 height = 48.0
 
+[sub_resource type="Animation" id="Animation_nuuvu"]
+resource_name = "death"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 15.708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_4c38n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q0kg8"]
+_data = {
+"RESET": SubResource("Animation_4c38n"),
+"death": SubResource("Animation_nuuvu")
+}
+
 [node name="PlayerRigidBody" type="RigidBody2D"]
 position = Vector2(542, 94)
 collision_mask = 3
@@ -238,6 +299,12 @@ stream = ExtResource("13_wkcew")
 volume_db = -2.0
 bus = &"Music"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q0kg8")
+}
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="ready" from="PlayerAnimSprite" to="." method="_on_player_anim_sprite_ready"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -58,7 +58,7 @@ func _on_dialog_option_selected(optionNumber):
 			tween.tween_callback(queue_free)
 			ready_to_interact = false
 		2:
-			print("Ignored, set a timer to allow interaction again in a few seconds")
+			#print("Ignored, set a timer to allow interaction again in a few seconds")
 			#Note that since it stays active, this fate might get set, then later adjusted back while they're still visible on camera
 			#So don't later on hook up an event listener to this fate to affect things with its on_changed or anything
 			PlayerStateManager.OxFate = PlayerStateManager.OxFates.PLOWED

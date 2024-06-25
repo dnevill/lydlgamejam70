@@ -11,7 +11,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sga7q"]
 shader = ExtResource("7_j81ql")
-shader_parameter/radius = 10.0
+shader_parameter/radius = 2.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p1nhc"]
 
@@ -29,6 +29,7 @@ motion_scale = Vector2(0.25, 0.25)
 motion_mirroring = Vector2(2304, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(1.1, 0.7)
 texture = ExtResource("2_i14i1")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -36,6 +37,7 @@ motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(2816, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(1.1, 0.7)
 texture = ExtResource("3_ucm6l")
 
 [node name="TerrainMap" type="TileMap" parent="."]
@@ -60,18 +62,23 @@ script = ExtResource("6_salax")
 [node name="WorldCurveEffect" type="TextureRect" parent="Camera2D"]
 visible = false
 material = SubResource("ShaderMaterial_sga7q")
-offset_left = -624.0
-offset_top = -321.0
-offset_right = 638.0
-offset_bottom = 383.0
+offset_left = -496.0
+offset_top = -271.0
+offset_right = 490.0
+offset_bottom = 275.0
 texture = SubResource("PlaceholderTexture2D_p1nhc")
+
+[node name="FadeOutIn" parent="Camera2D" instance=ExtResource("8_343mg")]
+visible = false
+offset_left = -581.0
+offset_top = -321.0
+offset_right = -581.0
+offset_bottom = -321.0
 
 [node name="Killplane" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killplane"]
 shape = SubResource("WorldBoundaryShape2D_n04s4")
 
-[node name="FadeOutIn" parent="." instance=ExtResource("8_343mg")]
-
 [connection signal="ready" from="." to="." method="_on_World_ready"]
-[connection signal="done_fading_in" from="FadeOutIn" to="." method="_on_fade_out_in_done_fading_in"]
+[connection signal="done_fading_in" from="Camera2D/FadeOutIn" to="." method="_on_fade_out_in_done_fading_in"]

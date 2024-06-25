@@ -145,6 +145,9 @@ autostart = true
 
 [node name="Flight noise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_lg1uj")
+volume_db = 2.0
+max_distance = 4000.0
+panning_strength = 1.5
 bus = &"SFX"
 
 [node name="InterestingNode" type="Node2D" parent="."]

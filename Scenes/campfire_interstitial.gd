@@ -17,8 +17,13 @@ func _ready():
 	$Timer.start()
 	fade_out_in.FadeIn()
 
+func _input(_event):
+	if Input.is_action_just_pressed("ui_cancel"):
+		$Timer.stop()
+		_on_timer_timeout()
+
 func _on_timer_timeout():
 	$FadeOutIn.FadeOut()
 
 func _on_fade_out_in_done_fading_out():
-	get_tree().change_scene_to_packed(main_menu) # Replace with function body.
+	if is_inside_tree(): get_tree().change_scene_to_packed(main_menu) # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://clwrf77gum46n"]
+[gd_scene load_steps=17 format=3 uid="uid://clwrf77gum46n"]
 
 [ext_resource type="Script" path="res://Scripts/Credits.gd" id="1_wcrmk"]
 [ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="2_1i26j"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dcynep724f3qb" path="res://Assets/Sprites/Goose_idle.png.png" id="8_lhaol"]
 [ext_resource type="Texture2D" uid="uid://cxwjpj01c53tb" path="res://Assets/Sprites/farmer.png" id="9_eitjv"]
 [ext_resource type="Texture2D" uid="uid://4dr0niiuicyl" path="res://Assets/Sprites/ox.png" id="10_l2h5a"]
+[ext_resource type="Texture2D" uid="uid://c863hh2coen1q" path="res://Assets/UI/reset_focused.png" id="12_coujq"]
+[ext_resource type="AudioStream" uid="uid://bscmxr5vy1n4m" path="res://Assets/Music/Forest_Ambience.mp3" id="13_73qvt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_74dcc"]
 font_size = 32
@@ -69,6 +71,7 @@ metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(0, 200)
+scale = Vector2(1.1, 1)
 texture = ExtResource("3_jx3pf")
 metadata/_edit_lock_ = true
 
@@ -92,6 +95,7 @@ metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 position = Vector2(0, 200)
+scale = Vector2(1.1, 1)
 metadata/_edit_lock_ = true
 
 [node name="BlackBoxTop" type="ColorRect" parent="."]
@@ -201,7 +205,14 @@ offset_top = 535.0
 offset_right = 254.0
 offset_bottom = 619.0
 texture_normal = ExtResource("4_bvbon")
+texture_focused = ExtResource("12_coujq")
 stretch_mode = 0
 metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_73qvt")
+volume_db = -8.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_pressed"]

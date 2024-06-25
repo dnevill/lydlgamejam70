@@ -10,6 +10,7 @@ func _ready():
 	pass;
 
 func _process(_delta):
+	@warning_ignore("INTEGER_DIVISION")
 	#
 	#	Lilypads erratically move up and down.
 	#
@@ -29,18 +30,18 @@ func _process(_delta):
 		elif self.position.y > setpointY:
 			if abs(self.position.y - setpointY) > TILE_SIZE:
 				self.position.y -= 10;
-			elif abs(self.position.y - setpointY) > TILE_SIZE/2:
+			elif abs(self.position.y - setpointY) > int(float(TILE_SIZE)/2):
 				self.position.y -= 4;
-			if abs(self.position.y - setpointY) > TILE_SIZE/4:
+			if abs(self.position.y - setpointY) > int(float(TILE_SIZE)/4):
 				self.position.y -= 2;
 			else:
 				self.position.y -= 1;
 		else:
 			if abs(self.position.y - setpointY) > TILE_SIZE:
 				self.position.y += 10;
-			elif abs(self.position.y - setpointY) > TILE_SIZE/2:
+			elif abs(self.position.y - setpointY) > int(float(TILE_SIZE)/2):
 				self.position.y += 4;
-			if abs(self.position.y - setpointY) > TILE_SIZE/4:
+			if abs(self.position.y - setpointY) > int(float(TILE_SIZE)/4):
 				self.position.y += 2;
 			else:
 				self.position.y += 1;

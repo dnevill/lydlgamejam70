@@ -28,7 +28,7 @@ func _on_area_2d_body_entered(body):
 	dialogBox.SetOption3Text("Knock over the fisherman")
 	if body.name == "PlayerRigidBody" and ready_to_interact:
 		ready_to_interact = false
-		print("Hey the player touched me OMGEEEEE lets spawn a dialogbox")
+		#print("Hey the player touched me OMGEEEEE lets spawn a dialogbox")
 		body.in_dialog = true
 		disabledPlayer = body
 		dialogBox.Reveal()
@@ -36,7 +36,7 @@ func _on_area_2d_body_entered(body):
 
 func _on_area_2d_body_exited(body):
 	if body.name == "PlayerRigidBody" and waiting_to_interact:
-		print("Hey the player stopped touchin' me")
+		#print("Hey the player stopped touchin' me")
 		waiting_to_interact = false
 		ready_to_interact = true
 		InterestingNode.visible = true;

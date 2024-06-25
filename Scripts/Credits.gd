@@ -7,6 +7,7 @@ var mainMenuSCN = preload("res://Scenes/main_menu.tscn");
 func _ready():
 	$ParallaxBackground.scroll_offset = Vector2(PlayerStateManager.creditsPBGoffset,0);
 	$StageAnim.play("CreditsRoll");
+	$BackBtn.grab_focus()
 
 func go_back():
 	PlayerStateManager.creditsPBGoffset = $ParallaxBackground.scroll_offset.x;

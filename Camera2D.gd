@@ -12,4 +12,4 @@ func _ready():
 func _process(_delta):
 	# adjust position, within bounds
 	self.position.x = max(LEFT_BOUNDS,min(player_rigid_body.position.x,RIGHT_BOUNDS));
-	self.position.y = max(UPPER_BOUNDS,min(player_rigid_body.position.y,LOWER_BOUNDS));
+	#self.position.y = max(UPPER_BOUNDS,min(player_rigid_body.position.y,LOWER_BOUNDS));

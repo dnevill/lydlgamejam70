@@ -15,7 +15,7 @@ var Cycle1Startpressed = preload("res://Assets/UI/start_tail_pressed.png")
 @onready var fader = $FadeOutIn
 
 func _ready():
-	print(str($AudioStreamPlayer.bus) + " is the music bus on main menu")
+	#print(str($AudioStreamPlayer.bus) + " is the music bus on main menu")
 	$ParallaxBackground.scroll_offset = Vector2(PlayerStateManager.creditsPBGoffset,0);
 	if PlayerStateManager.LumberjackAxeFate == PlayerStateManager.LumberjackAxeFates.GAVE:
 		$ParallaxBackground/ParallaxLayer.visible = false

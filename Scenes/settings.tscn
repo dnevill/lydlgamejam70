@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://b08p4d5dubqpd"]
+[gd_scene load_steps=8 format=3 uid="uid://b08p4d5dubqpd"]
 
 [ext_resource type="Script" path="res://Scenes/settings.gd" id="1_8lxnj"]
 [ext_resource type="Texture2D" uid="uid://db5rjsqj2l1aj" path="res://Assets/UI/back.png" id="2_b4nm1"]
+[ext_resource type="Texture2D" uid="uid://sy2i0orxvxeg" path="res://Assets/Backgrounds/forest_background_1.png" id="2_nbptv"]
+[ext_resource type="Texture2D" uid="uid://c863hh2coen1q" path="res://Assets/UI/reset_focused.png" id="3_tryko"]
+[ext_resource type="Texture2D" uid="uid://cvfray8h8jxoj" path="res://Assets/Backgrounds/forest_background_2.png" id="3_ygsnv"]
+[ext_resource type="AudioStream" uid="uid://bscmxr5vy1n4m" path="res://Assets/Music/Forest_Ambience.mp3" id="6_oplo4"]
+[ext_resource type="AudioStream" uid="uid://cg0co0lem0v26" path="res://Assets/SFX/ScratchClunk.ogg" id="7_qr3e5"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,13 +17,83 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8lxnj")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(0, -275)
+transform = Transform2D(1, 0, 0, 1, 0, -275)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(42, 538)
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(2304, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, 200)
+texture = ExtResource("2_nbptv")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(72, 538)
+motion_scale = Vector2(0.08, 0.08)
+motion_mirroring = Vector2(2816, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(0, 200)
+scale = Vector2(1.1, 1)
+texture = ExtResource("3_ygsnv")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+position = Vector2(42, 538)
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(2304, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(0, 200)
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+position = Vector2(72, 538)
+motion_scale = Vector2(0.08, 0.08)
+motion_mirroring = Vector2(2816, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(0, 200)
+scale = Vector2(1.1, 1)
+metadata/_edit_lock_ = true
+
 [node name="jumpbutton" type="Button" parent="."]
 layout_mode = 2
 offset_left = 540.0
 offset_top = 42.0
 offset_right = 762.0
 offset_bottom = 93.0
+focus_neighbor_left = NodePath("../TextureButton")
+focus_neighbor_top = NodePath("../curvebutton")
+focus_neighbor_right = NodePath("../leftbutton")
+focus_neighbor_bottom = NodePath("../leftbutton")
+focus_next = NodePath("../leftbutton")
+focus_previous = NodePath("../TextureButton")
 text = "W"
+
+[node name="curvebutton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 540.0
+offset_top = 528.0
+offset_right = 762.0
+offset_bottom = 579.0
+focus_neighbor_left = NodePath("../TextureButton")
+focus_neighbor_top = NodePath("../musicSlider")
+focus_neighbor_right = NodePath("../TextureButton")
+focus_neighbor_bottom = NodePath("../jumpbutton")
+focus_next = NodePath("../TextureButton")
+focus_previous = NodePath("../musicSlider")
+text = "Enabled"
 
 [node name="leftbutton" type="Button" parent="."]
 layout_mode = 2
@@ -26,6 +101,12 @@ offset_left = 540.0
 offset_top = 109.0
 offset_right = 762.0
 offset_bottom = 160.0
+focus_neighbor_left = NodePath("../TextureButton")
+focus_neighbor_top = NodePath("../jumpbutton")
+focus_neighbor_right = NodePath("../rightbutton")
+focus_neighbor_bottom = NodePath("../rightbutton")
+focus_next = NodePath("../rightbutton")
+focus_previous = NodePath("../jumpbutton")
 text = "A"
 
 [node name="rightbutton" type="Button" parent="."]
@@ -34,6 +115,12 @@ offset_left = 540.0
 offset_top = 176.0
 offset_right = 762.0
 offset_bottom = 243.0
+focus_neighbor_left = NodePath("../TextureButton")
+focus_neighbor_top = NodePath("../leftbutton")
+focus_neighbor_right = NodePath("../sfxSlider")
+focus_neighbor_bottom = NodePath("../sfxSlider")
+focus_next = NodePath("../sfxSlider")
+focus_previous = NodePath("../leftbutton")
 text = "D"
 
 [node name="jlabel" type="Label" parent="."]
@@ -44,6 +131,16 @@ offset_right = 492.0
 offset_bottom = 107.0
 theme_override_font_sizes/font_size = 48
 text = "Jump"
+
+[node name="curvelbl" type="Label" parent="."]
+layout_mode = 2
+offset_left = 372.0
+offset_top = 512.0
+offset_right = 492.0
+offset_bottom = 579.0
+theme_override_font_sizes/font_size = 48
+text = "Curve
+Effect"
 
 [node name="llabel" type="Label" parent="."]
 layout_mode = 2
@@ -87,6 +184,10 @@ offset_left = 540.0
 offset_top = 282.0
 offset_right = 1132.0
 offset_bottom = 362.0
+focus_neighbor_top = NodePath("../rightbutton")
+focus_neighbor_bottom = NodePath("../musicSlider")
+focus_next = NodePath("../musicSlider")
+focus_previous = NodePath("../rightbutton")
 max_value = 1.0
 step = 0.1
 value = 0.5
@@ -98,6 +199,10 @@ offset_left = 540.0
 offset_top = 362.0
 offset_right = 1132.0
 offset_bottom = 442.0
+focus_neighbor_top = NodePath("../sfxSlider")
+focus_neighbor_bottom = NodePath("../curvebutton")
+focus_next = NodePath("../curvebutton")
+focus_previous = NodePath("../sfxSlider")
 max_value = 1.0
 step = 0.1
 value = 0.5
@@ -109,11 +214,31 @@ offset_left = 28.0
 offset_top = 528.0
 offset_right = 252.0
 offset_bottom = 612.0
+focus_neighbor_right = NodePath("../curvebutton")
+focus_next = NodePath("../jumpbutton")
+focus_previous = NodePath("../curvebutton")
 texture_normal = ExtResource("2_b4nm1")
+texture_focused = ExtResource("3_tryko")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_oplo4")
+volume_db = -8.0
+autoplay = true
+bus = &"Music"
+
+[node name="ExampleSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_qr3e5")
+bus = &"SFX"
+
+[node name="ReturnFocusTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="pressed" from="jumpbutton" to="." method="_on_jumpbutton_pressed"]
+[connection signal="pressed" from="curvebutton" to="." method="_on_curvebutton_pressed"]
 [connection signal="pressed" from="leftbutton" to="." method="_on_leftbutton_pressed"]
 [connection signal="pressed" from="rightbutton" to="." method="_on_rightbutton_pressed"]
 [connection signal="value_changed" from="sfxSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="musicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="timeout" from="ReturnFocusTimer" to="." method="_on_return_focus_timer_timeout"]
