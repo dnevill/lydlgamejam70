@@ -93,20 +93,20 @@ func _physics_process(delta):
 			is_grounded = false;
 			has_lingering_jump = false
 			jump_energy_left = JUMPPOW
-			print("Have " + str(jump_energy_left) + " left")
+			#print("Have " + str(jump_energy_left) + " left")
 		elif Input.is_action_pressed("foxy_jump_accept") and jump_energy_left > 0 and linear_velocity.y < 0:
 			var energy_to_spend = min(JUMPPOW*delta*4, jump_energy_left)
 			jump_energy_left -= energy_to_spend
-			print("Spent: " + str(energy_to_spend) + " and have " + str(jump_energy_left) + " left")
+			#print("Spent: " + str(energy_to_spend) + " and have " + str(jump_energy_left) + " left")
 			apply_central_force(Vector2(0,-energy_to_spend))
 		elif Input.is_action_pressed("foxy_jump_accept") and jump_anim == "jump_griffox" and linear_velocity.y > 0:
 			var boost_to_add = -linear_velocity.y * mass * delta * 400
 			apply_central_force(Vector2(0,boost_to_add))
-			print("tryin' to float " + str(linear_velocity.y) + " zoomin and adding " + str(boost_to_add))
+			#print("tryin' to float " + str(linear_velocity.y) + " zoomin and adding " + str(boost_to_add))
 		elif Input.is_action_pressed("foxy_jump_accept") and jump_anim == "jump_winged" and linear_velocity.y > 0:
 			var boost_to_add = -linear_velocity.y * mass * delta * 200
 			apply_central_force(Vector2(0,boost_to_add))
-			print("tryin' to float " + str(linear_velocity.y) + " zoomin and adding " + str(boost_to_add))
+			#print("tryin' to float " + str(linear_velocity.y) + " zoomin and adding " + str(boost_to_add))
 		elif is_on_floor():
 			jump_energy_left = 0
 			if abs(linear_velocity.x) > 1:
@@ -136,6 +136,7 @@ func is_on_floor():
 func _on_body_entered(body):
 	if body.name == "Killplane":
 		freeze = true
+		in_dialog = true
 		$AnimationPlayer.play("death")
 		$BumpSFX.pitch_scale = 1.5
 		$BumpSFX.play()
@@ -166,6 +167,7 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "death":
 		teleport_position = start_position
 		freeze = false
+		in_dialog = false
 		$AnimationPlayer.play("RESET")
 		$BumpSFX.pitch_scale = 0.1
 		$BumpSFX.play()

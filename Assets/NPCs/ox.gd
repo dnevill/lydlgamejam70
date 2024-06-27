@@ -54,7 +54,7 @@ func _on_dialog_option_selected(optionNumber):
 			var tween = get_tree().create_tween()
 			tween.tween_property($Sprite2D, "scale", Vector2(4,4), 2)
 			tween.parallel().tween_property($Sprite2D, "position", Vector2.RIGHT * 500, 0.5).as_relative().from_current()
-			tween.tween_property($Sprite2D, "position", Vector2.LEFT * 1000 + Vector2.UP * 100, 1.5).as_relative()
+			tween.tween_property($Sprite2D, "position", Vector2.LEFT * 2000 + Vector2.UP * 100, 2.5).as_relative()
 			tween.tween_callback(queue_free)
 			ready_to_interact = false
 		2:
