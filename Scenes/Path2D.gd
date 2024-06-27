@@ -24,7 +24,7 @@ func _process(_delta):
 	if we_animate:
 		if not change_to_star:
 			var ratio = 1 - max(0, timer.time_left - anim_timer_end_point) / timer_start_time
-			print(str(timer.time_left) + " - " + str(anim_timer_end_point) + " / " + str(timer_start_time) + " = " + str(ratio) )
+			#print(str(timer.time_left) + " - " + str(anim_timer_end_point) + " / " + str(timer_start_time) + " = " + str(ratio) )
 			$PathFollow2D.progress_ratio = ratio
 			if ratio >= 1: change_to_star = true
 		elif not done_changing:

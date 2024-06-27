@@ -63,17 +63,20 @@ func _physics_process(delta):
 	#	PlayerStateManager.incrementfates()
 	#if Input.is_action_just_pressed("ui_page_down"):
 	#	PlayerStateManager.decrementfates()
+	physics_material_override.friction = 1
 	freeze = in_dialog
 	if Input.is_action_just_pressed("ui_cancel"):
 		PlayerStateManager.EndCycle(false, 0) #end the cycle, don't loop, don't increment the cycle count
 	if not in_dialog:
 		if Input.is_action_pressed("foxy_left"):
+			physics_material_override.friction = 0.0
 			$PlayerAnimSprite.flip_h = true;
 			for child in $PlayerAnimSprite.get_children():
 				child.flip_h = true
 			if linear_velocity.x > -MAXSPEED:
 				apply_central_force(Vector2(-HORZACCEL*delta,0))
 		elif Input.is_action_pressed("foxy_right"):
+			physics_material_override.friction = 0.0
 			$PlayerAnimSprite.flip_h = false;
 			for child in $PlayerAnimSprite.get_children():
 				child.flip_h = false
@@ -84,6 +87,7 @@ func _physics_process(delta):
 			#No left/right input, so we should start damping our movement back down
 			#var movementVector = player.
 		if (Input.is_action_just_pressed("foxy_jump_accept")) and is_on_floor():
+			physics_material_override.friction = 0.0
 			#start some jump animation
 			$PlayerAnimSprite.play(jump_anim)
 			$JumpSFX.play()
@@ -95,15 +99,18 @@ func _physics_process(delta):
 			jump_energy_left = JUMPPOW
 			#print("Have " + str(jump_energy_left) + " left")
 		elif Input.is_action_pressed("foxy_jump_accept") and jump_energy_left > 0 and linear_velocity.y < 0:
+			physics_material_override.friction = 0.0
 			var energy_to_spend = min(JUMPPOW*delta*4, jump_energy_left)
 			jump_energy_left -= energy_to_spend
 			#print("Spent: " + str(energy_to_spend) + " and have " + str(jump_energy_left) + " left")
 			apply_central_force(Vector2(0,-energy_to_spend))
 		elif Input.is_action_pressed("foxy_jump_accept") and jump_anim == "jump_griffox" and linear_velocity.y > 0:
+			physics_material_override.friction = 0.0
 			var boost_to_add = -linear_velocity.y * mass * delta * 400
 			apply_central_force(Vector2(0,boost_to_add))
 			#print("tryin' to float " + str(linear_velocity.y) + " zoomin and adding " + str(boost_to_add))
 		elif Input.is_action_pressed("foxy_jump_accept") and jump_anim == "jump_winged" and linear_velocity.y > 0:
+			physics_material_override.friction = 0.0
 			var boost_to_add = -linear_velocity.y * mass * delta * 200
 			apply_central_force(Vector2(0,boost_to_add))
 			#print("tryin' to float " + str(linear_velocity.y) + " zoomin and adding " + str(boost_to_add))
